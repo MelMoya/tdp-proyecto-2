@@ -5,8 +5,6 @@ import javax.swing.ImageIcon;
 import java.lang.reflect.*;
 public class Logic {
 
-	private static int rows = 21;
-	private static int columns = 10;
 	
 	private int score;
 	private int currentCompletedLines;
@@ -22,21 +20,22 @@ public class Logic {
 	
 	
 	public Logic(TetrisGUI myGUI) {
+		this.myGUI = myGUI;
 		score = 0;
 		currentCompletedLines = 0;
-		this.myGUI = myGUI;
 		currentTime = new Time(this);
-		myGrid = new Grid(rows, columns);
+		myGrid = new Grid(myGUI.getRows(), myGUI.getColumns(), this);
 		currentTetrimino = createNewTetrimino();
-		nextTetrimino = createNewTetrimino();
+		//nextTetrimino = createNewTetrimino();
 		
 	}
 	
 	
 	public Tetrimino createNewTetrimino() {
 		
+		Tetrimino t1 = new Tetrimino_I(myGrid);
 		
-		return null;
+		return t1;
 		
 	}
 	
@@ -62,7 +61,7 @@ public class Logic {
 	
 	public void moveToDown() {
 		
-		currentTetrimino.moveToDown();
+		currentTetrimino.moveDown();
 	}
 	
 	public void rotate() {
@@ -74,7 +73,7 @@ public class Logic {
 		
 	}
 	
-	public void refreshGUI(int x, int y, ImageIcon image) {
+	public void refreshGUI(int y, int x, ImageIcon image) {
 		
 		myGUI.draw(x, y, image);
 	}

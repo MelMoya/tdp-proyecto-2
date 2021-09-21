@@ -6,27 +6,29 @@ public class Tetrimino_Z extends Tetrimino {
 	}
 
 	@Override
-	public boolean moveToLeft() {
+	public void moveToLeft() {
 		// TODO Auto-generated method stub
-		return false;
+	
 	}
 
 	@Override
-	public boolean moveToRight() {
+	public void moveToRight() {
 		// TODO Auto-generated method stub
-		return false;
+		
 	}
 
 	@Override
-	public boolean rotate() {
+	public void rotate() {
 		// TODO Auto-generated method stub
-		return false;
+		
 	}
 
 	@Override
-	public boolean moveToDown() {
+	public void moveDown() {
 		// TODO Auto-generated method stub
-		return false;
+		
 	}
+
+
 
 }

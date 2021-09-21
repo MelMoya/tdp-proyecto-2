@@ -7,7 +7,16 @@ public class Cell {
 	private boolean state;
 	private ImageIcon image;
 	
-	private Grid grid;
+	private Grid myGrid;
+	
+	public Cell (int x, int y, ImageIcon image, Grid myGrid) {
+		
+		this.x = x;
+		this.y = y;
+		this.image = image; 
+		this.myGrid = myGrid;
+		state = false;
+	}
 	
 	public Cell (int x, int y, ImageIcon image) {
 		
@@ -20,21 +29,25 @@ public class Cell {
 	public void setX(int x) {
 		
 		this.x = x;
+	//	myGrid.occupyCell(this);
 	}
 	
 	public void setY(int y) {
 		
 		this.y = y;
+	//	myGrid.occupyCell(this);
 	}
 	
 	public void setStateAsTaken() {
 		
 		state = true;
+		myGrid.occupyCell(this);
 	}
 	
 	public void setStateAsFree() {
 		
 		state = false;
+		myGrid.releaseCell(this);
 	}
 	
 	public void setImage(ImageIcon image) {
@@ -62,5 +75,6 @@ public class Cell {
 		
 		return image;
 	}
-	
+
+
 }

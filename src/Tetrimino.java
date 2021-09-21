@@ -1,32 +1,34 @@
+import javax.swing.ImageIcon;
 
 public abstract class Tetrimino {
 	
-	protected int actualAngle;
+	protected int currentAngle;
+	protected ImageIcon cellImage;
 	protected Grid myGrid;
 	
 	protected Cell w;
 	protected Cell x;
 	protected Cell y;
 	protected Cell z;
-		
+	protected Cell referenceCell;
 	
 	public Tetrimino(Grid myGrid) {
-		actualAngle = 0;
+		currentAngle = 0;
 		this.myGrid = myGrid;
 	}
 	
 	
-	public abstract boolean moveToLeft();
+	public abstract void moveToLeft();
 	
-	public abstract boolean moveToRight();
+	public abstract void moveToRight();
 	
-	public abstract boolean rotate();
+	public abstract void rotate();
 	
-	public abstract boolean moveToDown();
+	public abstract void moveDown();
 	
 	public int getAngle() {
 		
-		return actualAngle;
+		return currentAngle;
 	}
 	
 		

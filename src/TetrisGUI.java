@@ -3,8 +3,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class TetrisGUI extends JFrame {
+	
+	private static int rows = 21;
+	private static int columns = 10;
 	
 	private JPanel graphicPanel;
 	private JLabel[][] graphicCells;
@@ -17,11 +22,11 @@ public class TetrisGUI extends JFrame {
 	
 	public TetrisGUI() {
 	
-		graphicPanel = new JPanel(new GridLayout(21, 10, 0, 0));
-		graphicCells = new JLabel[21][10];
+		graphicPanel = new JPanel(new GridLayout(rows, columns, 0, 0));
+		graphicCells = new JLabel[rows][columns];
 		
-		for (int i = 0; i < 21; i++) 
-			for (int j = 0; j < 10; j++) {
+		for (int i = 0; i < rows; i++) 
+			for (int j = 0; j < columns; j++) {
 				graphicCells[i][j] = new JLabel();
 				graphicCells[i][j].setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/emptyCell.png")));
 				graphicPanel.add(graphicCells[i][j]);
@@ -32,15 +37,63 @@ public class TetrisGUI extends JFrame {
 	//	currentBrokenLines.setText("0");
 		
 		setContentPane(graphicPanel);
-
+		
 		super.pack();
 		super.setVisible(true);
-	
 		myLogic = new Logic(this);
+		
+		this.addKeyListener(new KeyListener(){
+            @Override
+               public void keyPressed(KeyEvent e) {
+                   if(e.getKeyCode() == KeyEvent.VK_DOWN){
+                       myLogic.moveToDown();
+                   }
+                   
+                   if(e.getKeyCode() == KeyEvent.VK_LEFT){
+                       myLogic.moveToLeft();
+                   }
+                   
+                   if(e.getKeyCode() == KeyEvent.VK_UP) {
+                	   myLogic.rotate();
+                   }
+               }
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+
+       });
 	}
 	
-	public void draw(int x, int y, ImageIcon image) {
+	
+	public void draw(int y, int x, ImageIcon image) {
 		
-		
+		if (image != null)
+			graphicCells[x][y].setIcon(image);
+		else
+			graphicCells[x][y].setIcon(grassIcon);
+		System.out.println("X:"+x+"Y:"+y);
 	}
+	
+	
+	public int getRows() {
+		
+		return rows;	
+	}
+	
+	public int getColumns() {
+		
+		return columns;
+	}
+	
+	
 }
