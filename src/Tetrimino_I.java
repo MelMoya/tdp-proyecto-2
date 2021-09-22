@@ -2,6 +2,8 @@ import javax.swing.ImageIcon;
 
 public class Tetrimino_I extends Tetrimino{
 	
+	//Hola hola
+	
 	public Tetrimino_I(Grid myGrid) {
 		
 		super(myGrid);			
