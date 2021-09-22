@@ -4,6 +4,7 @@ public abstract class Tetrimino {
 	
 	protected int currentAngle;
 	protected ImageIcon cellImage;
+	protected ImageIcon cellImage2;
 	protected Grid myGrid;
 	
 	protected Cell w;
@@ -11,6 +12,9 @@ public abstract class Tetrimino {
 	protected Cell y;
 	protected Cell z;
 	protected Cell referenceCell;
+	
+	protected int refPosX;
+	protected int refPosY;
 	
 	public Tetrimino(Grid myGrid) {
 		currentAngle = 0;
