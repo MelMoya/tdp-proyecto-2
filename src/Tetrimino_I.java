@@ -58,32 +58,24 @@ public class Tetrimino_I extends Tetrimino{
 			
 			
 			case 0: 
-		
+					
+					setTetriminoCellsAsFree();
+					
 					validRotation = myGrid.checkMoveVertical(z.getXPosition() - 2, z.getYPosition()) &&
 									myGrid.checkMoveVertical(z.getXPosition() - 1, z.getYPosition()) &&
 									myGrid.checkMoveVertical(z.getXPosition() + 1, z.getYPosition()) ;
 					
 					if (validRotation) {
-						
-						x.setStateAsFree();
-						y.setStateAsFree();
-						z.setStateAsFree();
-						w.setStateAsFree();
 											
 						x.setX(z.getXPosition() - 2);
 						x.setY(z.getYPosition());
 						y.setX(z.getXPosition() - 1);
 						y.setY(z.getYPosition());
 						w.setX(z.getXPosition() + 1);
-						w.setY(z.getYPosition());
-					
-					
-						x.setStateAsTaken();
-						y.setStateAsTaken();
-						z.setStateAsTaken();
-						w.setStateAsTaken();
+						w.setY(z.getYPosition());		
 					}
-						
+					
+					setTetriminoCellsAsTaken();
 		}
 		
 		
@@ -124,6 +116,23 @@ public class Tetrimino_I extends Tetrimino{
 			z.setStateAsTaken();
 			w.setStateAsTaken();
 		}
+	}
+	
+	
+	private void setTetriminoCellsAsFree() {
+	
+		x.setStateAsFree();
+		y.setStateAsFree();
+		z.setStateAsFree();
+		w.setStateAsFree();
+	}
+	
+	private void setTetriminoCellsAsTaken() {
+		
+		x.setStateAsTaken();
+		y.setStateAsTaken();
+		z.setStateAsTaken();
+		w.setStateAsTaken();
 	}
 
 }
