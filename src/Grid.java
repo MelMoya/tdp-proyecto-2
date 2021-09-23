@@ -61,10 +61,9 @@ public class Grid {
 		
 		
 
-	//	System.out.println("bool:" + ((y >= 0 && y < columns)));
-
+	//	System.out.println("bool:" + ((y >= 0 && eey < columns)));
+	//	System.out.println(cellGrid[x][y].getCurrentState() == false);
 		return (x >= 0 && x < rows) && (cellGrid[x][y].getCurrentState() == false) ? true : false;
-		
 		
 	}
 	
@@ -79,6 +78,12 @@ public class Grid {
 
 		return cellGrid[x][y];
 	}
+	
+	public void generateNewTetrimino() {
+		
+		myLogic.createNewTetrimino();
+	}
+	
 	
 	
 	
