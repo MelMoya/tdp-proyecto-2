@@ -87,7 +87,7 @@ public class TetrisGUI extends JFrame {
 		else 
 			graphicCells[x][y].setIcon(grassIcon);
 
-		System.out.println("X:"+x+" Y:"+y);
+		//System.out.println("X:"+x+" Y:"+y);
 	}
 	
 	

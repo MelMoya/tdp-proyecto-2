@@ -34,7 +34,7 @@ public class Logic {
 	public Tetrimino createNewTetrimino() {
 		
 		//Tetrimino t1 = new Tetrimino_I(myGrid);
-		Tetrimino t1 = new Tetrimino_J(myGrid);
+		Tetrimino t1 = new Tetrimino_T(myGrid);
 		
 		return t1;
 		
