@@ -25,10 +25,10 @@ public class Tetrimino_O extends Tetrimino {
 			
 			setTetriminoCellsAsFree();
 			
-			x.setY(x.getYPosition() - 1);
-			y.setY(y.getYPosition() - 1);
-			w.setY(w.getYPosition() - 1);
-			z.setY(z.getYPosition() - 1);
+			x = myGrid.getCell(x.getXPosition(), x.getYPosition() - 1, cellImage);
+			y = myGrid.getCell(y.getXPosition(), y.getYPosition() - 1, cellImage);
+			z = myGrid.getCell(z.getXPosition(), z.getYPosition() - 1, cellImage);
+			w = myGrid.getCell(w.getXPosition(), w.getYPosition() - 1, cellImage);
 			
 			setTetriminoCellsAsTaken();
 		}
@@ -46,10 +46,10 @@ public class Tetrimino_O extends Tetrimino {
 			
 			setTetriminoCellsAsFree();
 			
-			x.setY(x.getYPosition() + 1);
-			y.setY(y.getYPosition() + 1);
-			w.setY(w.getYPosition() + 1);
-			z.setY(z.getYPosition() + 1);
+			x = myGrid.getCell(x.getXPosition(), x.getYPosition() + 1, cellImage);
+			y = myGrid.getCell(y.getXPosition(), y.getYPosition() + 1, cellImage);
+			z = myGrid.getCell(z.getXPosition(), z.getYPosition() + 1, cellImage);
+			w = myGrid.getCell(w.getXPosition(), w.getYPosition() + 1, cellImage);
 			
 			setTetriminoCellsAsTaken();
 		}
@@ -72,10 +72,11 @@ public class Tetrimino_O extends Tetrimino {
 			
 			setTetriminoCellsAsFree();
 			
-			x.setX(x.getXPosition() + 1);
-			y.setX(y.getXPosition() + 1);
-			z.setX(z.getXPosition() + 1);
-			w.setX(w.getXPosition() + 1);
+			x = myGrid.getCell(x.getXPosition() + 1, x.getYPosition(), cellImage);
+			y = myGrid.getCell(y.getXPosition() + 1, y.getYPosition(), cellImage);
+			z = myGrid.getCell(z.getXPosition() + 1, z.getYPosition(), cellImage);
+			w = myGrid.getCell(w.getXPosition() + 1, w.getYPosition(), cellImage);
+
 			
 			setTetriminoCellsAsTaken();
 			
