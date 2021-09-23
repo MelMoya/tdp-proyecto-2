@@ -17,36 +17,119 @@ public class Tetrimino_I extends Tetrimino{
 		y.setStateAsTaken();
 		z.setStateAsTaken();
 		x.setStateAsTaken();
-		z.setImage(cellImage2);
 	}
 
 	@Override
 	public void moveToLeft() {
 		
-
-		if (currentAngle == 0)
-			
-			referenceCell = x;
-			
-			if (myGrid.checkMoveHorizontal(referenceCell.getXPosition(), referenceCell.getYPosition() - 1)) {
-			
-				w.setStateAsFree();
-			
-				w.setY(w.getYPosition() - 1);
-				x.setY(x.getYPosition() - 1);
-				y.setY(y.getYPosition() - 1);
-				z.setY(z.getYPosition() - 1);
-			
-				x.setStateAsTaken();
-		 }
-	
 		
+		boolean validMove = false;
 	
+		switch (currentAngle) {
+			
+			case 0:
+			case 180:
+				
+				if (currentAngle == 0)
+					validMove = myGrid.checkMoveHorizontal(x.getXPosition(), x.getYPosition() - 1);
+				else
+					validMove = myGrid.checkMoveHorizontal(w.getXPosition(), w.getYPosition() - 1);
+				
+				if (validMove) {
+			
+					setTetriminoCellsAsFree();
+					
+					x = myGrid.getCell(x.getXPosition(), x.getYPosition() -1, cellImage);
+					y = myGrid.getCell(y.getXPosition(), y.getYPosition() -1, cellImage);
+					z = myGrid.getCell(z.getXPosition(), z.getYPosition() -1, cellImage);
+					w = myGrid.getCell(w.getXPosition(), w.getYPosition() -1, cellImage);
+			
+					setTetriminoCellsAsTaken();
+				}
+				
+				break;
+				
+			case 90:
+			case 270:
+				
+				validMove = myGrid.checkMoveHorizontal(x.getXPosition(), x.getYPosition() - 1) &&
+							myGrid.checkMoveHorizontal(y.getXPosition(), y.getYPosition() - 1) &&
+							myGrid.checkMoveHorizontal(z.getXPosition(), z.getYPosition() - 1) &&
+							myGrid.checkMoveHorizontal(w.getXPosition(), w.getYPosition() - 1); 
+					
+				if (validMove) {
+					
+					setTetriminoCellsAsFree();
+					
+					x = myGrid.getCell(x.getXPosition(), x.getYPosition() - 1, cellImage);
+					y = myGrid.getCell(y.getXPosition(), y.getYPosition() - 1, cellImage);
+					z = myGrid.getCell(z.getXPosition(), z.getYPosition() - 1, cellImage);
+					w = myGrid.getCell(w.getXPosition(), w.getYPosition() - 1, cellImage);
+			
+					setTetriminoCellsAsTaken();
+				}
+				
+				break;
+			
+		}
+			
+
 	}
 
 	@Override
-	public void moveToRight() {
-
+	public void moveToRight() {		
+		
+		boolean validMove = false;
+	
+		switch (currentAngle) {
+			
+			case 0:
+			case 180:
+				System.out.println("xd");
+				if (currentAngle == 0)
+					validMove = myGrid.checkMoveHorizontal(w.getXPosition(), w.getYPosition() + 1);
+				else
+					validMove = myGrid.checkMoveHorizontal(x.getXPosition(), x.getYPosition() + 1);
+				
+				if (validMove) {
+			
+					setTetriminoCellsAsFree();
+					
+					x = myGrid.getCell(x.getXPosition(), x.getYPosition() +1, cellImage);
+					y = myGrid.getCell(y.getXPosition(), y.getYPosition() +1, cellImage);
+					z = myGrid.getCell(z.getXPosition(), z.getYPosition() +1, cellImage);
+					w = myGrid.getCell(w.getXPosition(), w.getYPosition() +1, cellImage);
+			
+					setTetriminoCellsAsTaken();
+				}
+				
+				break;
+				
+			case 90:
+			case 270:
+				
+				validMove = myGrid.checkMoveHorizontal(x.getXPosition(), x.getYPosition() + 1) &&
+							myGrid.checkMoveHorizontal(y.getXPosition(), y.getYPosition() + 1) &&
+							myGrid.checkMoveHorizontal(z.getXPosition(), z.getYPosition() + 1) &&
+							myGrid.checkMoveHorizontal(w.getXPosition(), w.getYPosition() + 1); 
+					
+				if (validMove) {
+					
+					setTetriminoCellsAsFree();
+					
+					x = myGrid.getCell(x.getXPosition(), x.getYPosition() + 1, cellImage);
+					y = myGrid.getCell(y.getXPosition(), y.getYPosition() + 1, cellImage);
+					z = myGrid.getCell(z.getXPosition(), z.getYPosition() + 1, cellImage);
+					w = myGrid.getCell(w.getXPosition(), w.getYPosition() + 1, cellImage);
+			
+					setTetriminoCellsAsTaken();
+				}
+				
+				break;
+			
+		}
+		
+		
 	}
 
 	@Override
@@ -57,24 +140,22 @@ public class Tetrimino_I extends Tetrimino{
 		switch (currentAngle) {
 			
 			case 0: 
-				
 				refPosX = z.getXPosition();
 				refPosY = z.getYPosition();
+				z.setImage(cellImage2);
 				
-				validRotation = myGrid.checkMoveVertical(refPosX - 2, refPosY) &&
-								myGrid.checkMoveVertical(refPosX - 1, refPosY) &&
-								myGrid.checkMoveVertical(refPosX + 1, refPosY);
-					
+			//	System.out.println(myGrid.getCell(refPosX-2, refPosY+2, cellImage).getCurrentState());
+				validRotation = refPosX > 1 && myGrid.checkMoveVertical(refPosX - 2, refPosY) &&
+											   myGrid.checkMoveVertical(refPosX - 1, refPosY) &&
+								 			   myGrid.checkMoveVertical(refPosX + 1, refPosY);
+			//	System.out.println(validRotation);
 				if (validRotation) {
 									
 					setTetriminoCellsAsFree();
-						
-					x.setX(refPosX - 2);
-					x.setY(refPosY);
-					y.setX(refPosX - 1);
-					y.setY(refPosY);
-					w.setX(refPosX + 1);
-					w.setY(refPosY);	
+					
+					x = myGrid.getCell(refPosX - 2, refPosY, cellImage);
+					y = myGrid.getCell(refPosX - 1, refPosY, cellImage);
+					w = myGrid.getCell(refPosX + 1, refPosY, cellImage);;	
 						
 					setTetriminoCellsAsTaken();
 				}
@@ -88,20 +169,17 @@ public class Tetrimino_I extends Tetrimino{
 				refPosY = z.getYPosition();
 				
 				validRotation = myGrid.checkMoveHorizontal(refPosX, refPosY + 1) &&
-								myGrid.checkMoveHorizontal(refPosX, refPosY ) &&
 								myGrid.checkMoveHorizontal(refPosX, refPosY - 1) && 
 								myGrid.checkMoveHorizontal(refPosX, refPosY - 2);
 				
 				if (validRotation) {
 					
 					setTetriminoCellsAsFree();
-		
-					x.setX(refPosX);
-					x.setY(refPosY - 2);
-					y.setX(refPosX);
-					y.setY(refPosY - 1);
-					w.setX(refPosX);
-					w.setY(refPosY + 1);	
+			
+					x = myGrid.getCell(refPosX, refPosY + 1, cellImage);
+					y = myGrid.getCell(refPosX, refPosY - 1, cellImage);
+					w = myGrid.getCell(refPosX, refPosY - 2, cellImage);;	
+						
 					
 					setTetriminoCellsAsTaken();
 				}
@@ -114,21 +192,17 @@ public class Tetrimino_I extends Tetrimino{
 				refPosY = y.getYPosition();
 			
 				validRotation = myGrid.checkMoveVertical(refPosX - 2, refPosY) &&
-								myGrid.checkMoveVertical(refPosX - 1, refPosY) &&
-								myGrid.checkMoveVertical(refPosX, refPosY) && 
+								myGrid.checkMoveVertical(refPosX - 1, refPosY) && 
 								myGrid.checkMoveVertical(refPosX + 1, refPosY);
 				
 				if (validRotation) {
 					
 					setTetriminoCellsAsFree();
 		
-					x.setX(refPosX - 2);
-					x.setY(refPosY);
-					z.setX(refPosX - 1);	
-					z.setY(refPosY );	
-					w.setX(refPosX + 1);
-					w.setY(refPosY);	
-					
+					x = myGrid.getCell(refPosX - 2, refPosY, cellImage);
+					z = myGrid.getCell(refPosX - 1, refPosY, cellImage);
+					w = myGrid.getCell(refPosX + 1, refPosY, cellImage);;	
+								
 					setTetriminoCellsAsTaken();
 				}
 				
@@ -141,19 +215,15 @@ public class Tetrimino_I extends Tetrimino{
 			
 			validRotation = myGrid.checkMoveHorizontal(refPosX, refPosY - 1) &&
 							myGrid.checkMoveHorizontal(refPosX, refPosY + 1) &&
-							myGrid.checkMoveHorizontal(refPosX, refPosY) && 
 							myGrid.checkMoveHorizontal(refPosX, refPosY + 2);
 			
 			if (validRotation) {
 				
 				setTetriminoCellsAsFree();
 	
-				x.setX(refPosX);
-				x.setY(refPosY- 1);
-				z.setX(refPosX);
-				z.setY(refPosY   + 1);
-				w.setX(refPosX);
-				w.setY(refPosY + 2);	
+				x = myGrid.getCell(refPosX, refPosY - 1, cellImage);
+				z = myGrid.getCell(refPosX, refPosY + 1, cellImage);
+				w = myGrid.getCell(refPosX, refPosY + 2, cellImage);;	
 				
 				setTetriminoCellsAsTaken();
 			}
@@ -162,8 +232,7 @@ public class Tetrimino_I extends Tetrimino{
 				  
 		}
 		
-		
-		
+
 		if (currentAngle <= 180)
 			currentAngle += 90;
 		else
@@ -185,17 +254,23 @@ public class Tetrimino_I extends Tetrimino{
 		
 		validMove = ((myGrid.checkMoveVertical(x.getXPosition() + 1, x.getYPosition())) &&
 					(myGrid.checkMoveVertical(y.getXPosition() + 1, y.getYPosition())) &&
-					(myGrid.checkMoveVertical(refPosY + 1, z.getYPosition())) &&
+					(myGrid.checkMoveVertical(z.getXPosition() + 1, z.getYPosition())) &&
 					(myGrid.checkMoveVertical(w.getXPosition() + 1, w.getYPosition())));
 		
 		if (validMove) {		
 			
 			setTetriminoCellsAsFree();
 			
-			x.setX(x.getXPosition() +1);
+			x = myGrid.getCell(x.getXPosition() + 1, x.getYPosition(), cellImage);
+			y = myGrid.getCell(y.getXPosition() + 1, y.getYPosition(), cellImage);
+			z = myGrid.getCell(z.getXPosition() + 1, z.getYPosition(), cellImage);
+			w = myGrid.getCell(w.getXPosition() + 1, w.getYPosition(), cellImage);
+
+			
+			/*x.setX(x.getXPosition() + 1);
 			y.setX(y.getXPosition() + 1);
 			z.setX(z.getXPosition() + 1);
-			w.setX(w.getXPosition() + 1);
+			w.setX(w.getXPosition() + 1);*/
 			
 			setTetriminoCellsAsTaken();
 		}

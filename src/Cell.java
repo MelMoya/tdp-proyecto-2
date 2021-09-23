@@ -23,7 +23,7 @@ public class Cell {
 		this.x = x;
 		this.y = y;
 		this.image = image;
-		
+		state = false;
 	}
 	
 	public void setX(int x) {

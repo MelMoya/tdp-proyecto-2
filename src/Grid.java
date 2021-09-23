@@ -62,7 +62,7 @@ public class Grid {
 		
 
 	//	System.out.println("bool:" + ((y >= 0 && y < columns)));
-	//	System.out.println("YYY:"+y);
+
 		return (x >= 0 && x < rows) && (cellGrid[x][y].getCurrentState() == false) ? true : false;
 		
 		
@@ -72,6 +72,11 @@ public class Grid {
 	public Cell getCell(int x, int y, ImageIcon cellImage) {
 
 		cellGrid[x][y].setImage(cellImage);
+		return cellGrid[x][y];
+	}
+	
+	public Cell getCell(int x, int y) {
+
 		return cellGrid[x][y];
 	}
 	

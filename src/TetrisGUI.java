@@ -21,6 +21,7 @@ public class TetrisGUI extends JFrame {
 	private Logic myLogic;
 	
 	public TetrisGUI() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	
 		graphicPanel = new JPanel(new GridLayout(rows, columns, 0, 0));
 		graphicCells = new JLabel[rows][columns];
@@ -51,6 +52,10 @@ public class TetrisGUI extends JFrame {
                    
                    if(e.getKeyCode() == KeyEvent.VK_LEFT){
                        myLogic.moveToLeft();
+                   }
+                   
+                   if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+                       myLogic.moveToRight();
                    }
                    
                    if(e.getKeyCode() == KeyEvent.VK_UP) {
