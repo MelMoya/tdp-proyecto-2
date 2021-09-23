@@ -290,7 +290,7 @@ public class Tetrimino_L extends Tetrimino {
 
 	@Override
 	public void moveDown() {
-boolean valid = false;
+		boolean valid = false;
 		
 		switch (currentAngle) {
 		
