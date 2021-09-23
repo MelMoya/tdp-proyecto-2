@@ -61,6 +61,10 @@ public class TetrisGUI extends JFrame {
                    if(e.getKeyCode() == KeyEvent.VK_UP) {
                 	   myLogic.rotate();
                    }
+                   
+                   if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                	   myLogic.moveToRight();
+                   }
                }
 
 			@Override
@@ -82,11 +86,12 @@ public class TetrisGUI extends JFrame {
 	
 	public void draw(int y, int x, ImageIcon image) {
 		
-		if (image != null)
+		if (image != null) 
 			graphicCells[x][y].setIcon(image);
-		else
+		else 
 			graphicCells[x][y].setIcon(grassIcon);
-		System.out.println("X:"+x+"Y:"+y);
+
+		System.out.println("X:"+x+" Y:"+y);
 	}
 	
 	
