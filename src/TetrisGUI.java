@@ -61,10 +61,6 @@ public class TetrisGUI extends JFrame {
                    if(e.getKeyCode() == KeyEvent.VK_UP) {
                 	   myLogic.rotate();
                    }
-                   
-                   if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                	   myLogic.moveToRight();
-                   }
                }
 
 			@Override

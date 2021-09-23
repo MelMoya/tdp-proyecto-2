@@ -158,6 +158,8 @@ public class Tetrimino_I extends Tetrimino{
 					w = myGrid.getCell(refPosX + 1, refPosY, cellImage);;	
 						
 					setTetriminoCellsAsTaken();
+					
+					currentAngle = 90;
 				}
 					
 				break;
@@ -182,6 +184,8 @@ public class Tetrimino_I extends Tetrimino{
 						
 					
 					setTetriminoCellsAsTaken();
+					
+					currentAngle = 180;
 				}
 				
 				break;
@@ -204,6 +208,8 @@ public class Tetrimino_I extends Tetrimino{
 					w = myGrid.getCell(refPosX + 1, refPosY, cellImage);;	
 								
 					setTetriminoCellsAsTaken();
+					
+					currentAngle = 270;
 				}
 				
 				break;
@@ -226,17 +232,19 @@ public class Tetrimino_I extends Tetrimino{
 				w = myGrid.getCell(refPosX, refPosY + 2, cellImage);;	
 				
 				setTetriminoCellsAsTaken();
+				
+				currentAngle = 0;
 			}
 			
 			break; 
 				  
 		}
 		
-
-		if (currentAngle <= 180)
-			currentAngle += 90;
-		else
-			currentAngle = 0;
+		// Si lo pones aca afuera el angulo va cambiando por mas que no pueda girarlo
+//		if (currentAngle <= 180)
+//			currentAngle += 90;
+//		else
+//			currentAngle = 0;
 	}
 		
 		
