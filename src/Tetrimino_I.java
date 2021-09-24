@@ -105,9 +105,7 @@ public class Tetrimino_I extends Tetrimino {
 
 	@Override
 	public void rotate() {
-		
-		
-		
+			
 		refreshPositions();
 		boolean validRotation = false;
 
@@ -126,6 +124,8 @@ public class Tetrimino_I extends Tetrimino {
 						setTetriminoCellsAsFree();
 						assignNewCellsToTetrimino(zx - 2, zy, zx - 1, zy, zx, zy, zx + 1, zy);	
 						setTetriminoCellsAsTaken();		
+						
+						currentAngle = 90;
 					}
 						
 					break;
@@ -141,6 +141,8 @@ public class Tetrimino_I extends Tetrimino {
 						setTetriminoCellsAsFree();
 						assignNewCellsToTetrimino(zx, zy + 1, zx, zy - 1, zx, zy, zx, zy - 2);	
 						setTetriminoCellsAsTaken();
+						
+						currentAngle = 180;
 					}
 					
 					break;
@@ -157,6 +159,8 @@ public class Tetrimino_I extends Tetrimino {
 						setTetriminoCellsAsFree();
 						assignNewCellsToTetrimino(yx - 2, yy, yx, yy, yx - 1, yy, yx + 1, yy);						
 						setTetriminoCellsAsTaken();
+						
+						currentAngle = 270;
 					}
 					
 					break;
@@ -171,17 +175,15 @@ public class Tetrimino_I extends Tetrimino {
 					
 					setTetriminoCellsAsFree();
 					assignNewCellsToTetrimino(yx, yy -1, yx, yy, yx, yy + 1, yx, yy + 2);	
-					setTetriminoCellsAsTaken();				
+					setTetriminoCellsAsTaken();			
+					
+					currentAngle = 0;
 				}
 				
 				break; 
 					  
 			}
 		
-			if (currentAngle <= 180)
-				currentAngle += 90;
-			else
-				currentAngle = 0;
 	}
 		
 
@@ -204,7 +206,7 @@ public class Tetrimino_I extends Tetrimino {
 							(myGrid.checkMoveVertical(wx + 1, wy)));
 			
 				if (validMove) {		
-					System.out.println("ENTRE ACA");
+				//	System.out.println("ENTRE ACA");
 					setTetriminoCellsAsFree();
 					assignNewCellsToTetrimino(xx + 1, xy, yx + 1, yy, zx + 1, zy, wx + 1, wy);
 					
@@ -234,7 +236,11 @@ public class Tetrimino_I extends Tetrimino {
 				break;
 			}
 			
-			
+			if (validMove == false) {
+				System.out.println("jeje entre");
+				if (myGrid.checkFullRow(w.getXPosition()))
+					myGrid.clearRow(w.getXPosition());
+			}
 			return validMove;
 	//	else //{
 		//	if (myGrid.checkFullRow(x.getXPosition())) {
@@ -253,4 +259,13 @@ public class Tetrimino_I extends Tetrimino {
 		
 	}
 
+	
+	// rotar izquierda
+	// adaptar todos los tetriminos a la forma en la que esta implementada el tetrimino_i
+	// Tetrimino S
+	// limpiar y acomodar celdas al formar una linea
+	// Generar tetrimino aleatorio
+	// acomodar GUI
+	
+	
 }

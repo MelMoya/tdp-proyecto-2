@@ -3,8 +3,9 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 import java.lang.reflect.*;
-public class Logic {
 
+
+public class Logic {
 	
 	private int score;
 	private int currentCompletedLines;
@@ -23,11 +24,12 @@ public class Logic {
 		this.myGUI = myGUI;
 		score = 0;
 		currentCompletedLines = 0;
-		currentTime = new Time(this);
+
 		myGrid = new Grid(myGUI.getRows(), myGUI.getColumns(), this);
 		currentTetrimino = createNewTetrimino();
-		nextTetrimino = createNewTetrimino();
-		
+		nextTetrimino = createNewTetrimino();	
+		currentTime = new Time(this);
+		currentTime.start();
 	}
 	
 	
@@ -41,7 +43,7 @@ public class Logic {
 
 		//Tetrimino t1 = new Tetrimino_I(myGrid);
 		//currentTetrimino = t1;
-		Tetrimino t1 = new Tetrimino_Z(myGrid);
+		//Tetrimino t1 = new Tetrimino_Z(myGrid);
 
 		//Tetrimino t1 = new Tetrimino_L(myGrid);
 		return new Tetrimino_I(myGrid);
@@ -69,8 +71,9 @@ public class Logic {
 	}
 	
 	public void moveToDown() {
-		
+	
 		if (!currentTetrimino.moveDown()) {
+	
 			currentTetrimino = nextTetrimino;
 			nextTetrimino = createNewTetrimino();
 		}
@@ -87,7 +90,7 @@ public class Logic {
 	}
 	
 	public void refreshGUI(int y, int x, ImageIcon image) {
-		System.out.println(currentTime.getElapsedTime() / 600);
+	//	System.out.println(currentTime.getElapsedTime() / 600);
 		myGUI.draw(x, y, image);
 	}
 	
@@ -107,8 +110,4 @@ public class Logic {
 		
 	}
 	
-	
-	
-	
-
 }

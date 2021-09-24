@@ -25,12 +25,10 @@ public abstract class Tetrimino {
 	protected int wx;
 	protected int wy;
 	
-	
 	public Tetrimino(Grid myGrid) {
 		currentAngle = 0;
 		this.myGrid = myGrid;
 	}
-	
 	
 	public abstract void moveToLeft();
 	
@@ -73,7 +71,7 @@ public abstract class Tetrimino {
 		x = myGrid.getCell(x1, y1, cellImage);
 		y = myGrid.getCell(x2, y2, cellImage);
 		z = myGrid.getCell(x3, y3, cellImage);
-		w = myGrid.getCell(x4, y4, cellImage);
+		w = myGrid.getCell(x4, y4, cellImage2);
 	}
 	
 	protected void refreshPositions() {
@@ -87,7 +85,5 @@ public abstract class Tetrimino {
 		wx = w.getXPosition();
 		wy = w.getYPosition();
 	}
-	
-	
 		
 }

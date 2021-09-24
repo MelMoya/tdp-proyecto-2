@@ -24,12 +24,24 @@ public class Grid {
 	}
 	
 	public void clearRow(int x) {
-		for (int j = 0; j < columns; j++)
-				cellGrid[x][j].setStateAsFree();
-				
-			}
+		
+		for (int j = 0; j < columns; j++) {
+			cellGrid[x][j].setStateAsFree();
+			if (cellGrid[x-1][j].getCurrentState() == true)
+				cellGrid[x][j] = getCell(x, j, cellGrid[x-1][j].getImage());
+			
+		}
+		
+		moveAllDown(x);
+	}
 	
 	
+	private void moveAllDown(int x) {
+		
+	//	for (int i = 0; )
+		
+	}
+
 	public void occupyCell(Cell cell) {
 
 		myLogic.refreshGUI(cell.getXPosition(), cell.getYPosition(), cell.getImage());
@@ -41,10 +53,13 @@ public class Grid {
 	}
 	
 	// falta hacer
-	public boolean checkFullRow(int x) {
+	public boolean checkFullRow(int y) {
+	
 			boolean llena = true;
-			for (int j = 0; j < columns && llena; j++)
-				llena = cellGrid[x][j].getCurrentState();
+			
+			for (int j = 0; j < columns && llena; j++)	 
+				llena = cellGrid[y][j].getCurrentState();				
+			
 			return llena;
 	}
 	
@@ -86,9 +101,5 @@ public class Grid {
 		myLogic.createNewTetrimino();
 	}
 	
-	
-	
-	
-	
-	
+		
 }

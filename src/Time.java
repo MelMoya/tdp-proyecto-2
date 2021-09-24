@@ -1,26 +1,21 @@
 import java.util.concurrent.TimeUnit;
 
-public class Time {
+public class Time extends Thread {
 
 	private long startTime = 0;
 	private long stopTime = 0;
-	private boolean running = false;
+	private boolean running;
 	private Logic logic;
     long starttime= 0;
 	
 	public Time(Logic logic) {
 		
 		this.logic = logic;
-		start();
+		this.running = true;
 	}
 	
-	public void start() {
-	    this.startTime = System.currentTimeMillis();
-	    this.running = true;
-	}
 
-
-	public void stop() {
+	public void stopTime() {
 	    this.stopTime = System.currentTimeMillis();
 	    this.running = false;
 	}
@@ -34,6 +29,17 @@ public class Time {
 	        elapsed = (stopTime - startTime);
 	    
 	    return elapsed;
+	}
+
+	@Override
+	public void run() {
+		
+		while (this.running) {
+			try {
+				Thread.sleep(1000);
+				logic.moveToDown();			
+			} catch(InterruptedException e) {}
+		}
 	}
 
 	
