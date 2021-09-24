@@ -146,7 +146,7 @@ public class Tetrimino_Z extends Tetrimino {
 	}
 
 	@Override
-	public void moveDown() {
+	public boolean moveDown() {
 		boolean block1 = false;
 		boolean block2 = false;
 		boolean block3 = false;
@@ -181,21 +181,11 @@ public class Tetrimino_Z extends Tetrimino {
 				w = myGrid.getCell(w.getXPosition() + 1, w.getYPosition(), cellImage);				
 				setTetriminoCellsAsTaken();
 			}
+			
+			
+			return block1 && block2 && block3;
 		
 	}
 
-	private void setTetriminoCellsAsFree() {
-		x.setStateAsFree();
-		y.setStateAsFree();
-		z.setStateAsFree();
-		w.setStateAsFree();
-	}
-	
-	private void setTetriminoCellsAsTaken() {		
-		x.setStateAsTaken();
-		y.setStateAsTaken();
-		z.setStateAsTaken();
-		w.setStateAsTaken();
-	}
 
 }

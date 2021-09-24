@@ -62,7 +62,7 @@ public class Tetrimino_O extends Tetrimino {
 	}
 
 	@Override
-	public void moveDown() {
+	public boolean moveDown() {
 		referenceCell = z;
 		
 		boolean valid = (myGrid.checkMoveVertical(referenceCell.getXPosition() + 1, referenceCell.getYPosition()) &&
@@ -82,22 +82,7 @@ public class Tetrimino_O extends Tetrimino {
 			
 		}
 		
-	}
-	
-	private void setTetriminoCellsAsFree() {
-		
-		x.setStateAsFree();
-		y.setStateAsFree();
-		z.setStateAsFree();
-		w.setStateAsFree();
-	}
-	
-	private void setTetriminoCellsAsTaken() {
-		
-		x.setStateAsTaken();
-		y.setStateAsTaken();
-		z.setStateAsTaken();
-		w.setStateAsTaken();
+		return valid;
 	}
 
 }

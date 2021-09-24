@@ -294,7 +294,7 @@ public class Tetrimino_J extends Tetrimino{
 	}
 
 	@Override
-	public void moveDown() {
+	public boolean moveDown() {
 		boolean valid = false;
 		
 		switch (currentAngle) {
@@ -378,23 +378,10 @@ public class Tetrimino_J extends Tetrimino{
 			break;
 		}
 		
+		return valid;
+		
 	}
 
-	private void setTetriminoCellsAsFree() {
-		
-		x.setStateAsFree();
-		y.setStateAsFree();
-		z.setStateAsFree();
-		w.setStateAsFree();
-	}
-	
-	private void setTetriminoCellsAsTaken() {
-		
-		x.setStateAsTaken();
-		y.setStateAsTaken();
-		z.setStateAsTaken();
-		w.setStateAsTaken();
-	}
 
 
 }

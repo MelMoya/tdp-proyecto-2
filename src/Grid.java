@@ -23,13 +23,12 @@ public class Grid {
 			
 	}
 	
-	public void clearRow(int y) {
-		for (int i = 0; i < rows; i++)
-			for (int j = y + 1; j < columns; j++) {
-				cellGrid[i][j] = cellGrid[i][j-1];
+	public void clearRow(int x) {
+		for (int j = 0; j < columns; j++)
+				cellGrid[x][j].setStateAsFree();
 				
 			}
-	}
+	
 	
 	public void occupyCell(Cell cell) {
 
@@ -42,8 +41,11 @@ public class Grid {
 	}
 	
 	// falta hacer
-	public boolean checkFullRow(Cell [] cell) {
-		return true;
+	public boolean checkFullRow(int x) {
+			boolean llena = true;
+			for (int j = 0; j < columns && llena; j++)
+				llena = cellGrid[x][j].getCurrentState();
+			return llena;
 	}
 	
 	public boolean checkMoveHorizontal(int x, int y) {

@@ -26,7 +26,7 @@ public class Logic {
 		currentTime = new Time(this);
 		myGrid = new Grid(myGUI.getRows(), myGUI.getColumns(), this);
 		currentTetrimino = createNewTetrimino();
-		//nextTetrimino = createNewTetrimino();
+		nextTetrimino = createNewTetrimino();
 		
 	}
 	
@@ -36,11 +36,15 @@ public class Logic {
 		//Tetrimino t1 = new Tetrimino_I(myGrid);
 		//Tetrimino t1 = new Tetrimino_T(myGrid);
 		
+
+		//Tetrimino t1 = new Tetrimino_J(myGrid);
+
 		//Tetrimino t1 = new Tetrimino_I(myGrid);
 		//currentTetrimino = t1;
 		Tetrimino t1 = new Tetrimino_Z(myGrid);
+
 		//Tetrimino t1 = new Tetrimino_L(myGrid);
-		return t1;
+		return new Tetrimino_I(myGrid);
 		
 	}
 	
@@ -66,7 +70,11 @@ public class Logic {
 	
 	public void moveToDown() {
 		
-		currentTetrimino.moveDown();
+		if (!currentTetrimino.moveDown()) {
+			currentTetrimino = nextTetrimino;
+			nextTetrimino = createNewTetrimino();
+		}
+		
 	}
 	
 	public void rotate() {
@@ -79,7 +87,7 @@ public class Logic {
 	}
 	
 	public void refreshGUI(int y, int x, ImageIcon image) {
-		
+		System.out.println(currentTime.getElapsedTime() / 600);
 		myGUI.draw(x, y, image);
 	}
 	

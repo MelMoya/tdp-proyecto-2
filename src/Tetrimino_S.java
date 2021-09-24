@@ -23,9 +23,9 @@ public class Tetrimino_S extends Tetrimino{
 	}
 
 	@Override
-	public void moveDown() {
+	public boolean moveDown() {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 
 

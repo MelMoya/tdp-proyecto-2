@@ -175,7 +175,7 @@ public class Tetrimino_T extends Tetrimino {
 		}	
 
 	@Override
-	public void moveDown() {
+	public boolean moveDown() {
 		
 		boolean validMove = false;
 		switch(currentAngle) {		
@@ -213,22 +213,7 @@ public class Tetrimino_T extends Tetrimino {
 				setTetriminoCellsAsTaken();
 			}
 			
-	}
-
-	private void setTetriminoCellsAsFree() {
-		
-		x.setStateAsFree();
-		y.setStateAsFree();
-		z.setStateAsFree();
-		w.setStateAsFree();
-	}
-	
-	private void setTetriminoCellsAsTaken() {
-		
-		x.setStateAsTaken();
-		y.setStateAsTaken();
-		z.setStateAsTaken();
-		w.setStateAsTaken();
+			return validMove;
 	}
 
 // FALTA CONTROL DE MOVIMIENTO EN EL FONDO, PERO ESO SE TIENE QUE CONTROLAR CON EL MOVEDOWN QUE SE HACE EN BASE DEL TIEMPO Y LA VELOCIDAD
