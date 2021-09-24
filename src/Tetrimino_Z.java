@@ -95,7 +95,7 @@ public class Tetrimino_Z extends Tetrimino {
 				refPosX = z.getXPosition();
 				refPosY = z.getYPosition();	
 				block1 = myGrid.checkMoveVertical(refPosX - 1, refPosY - 1) && myGrid.checkMoveHorizontal(refPosX - 1, refPosY - 1);
-				block2 = myGrid.checkMoveVertical(refPosX, refPosY + 1) && myGrid.checkMoveHorizontal(refPosX, refPosY + 1);
+				block2 = myGrid.checkMoveHorizontal(refPosX, refPosY + 1);
 				if(block1 && block2) {
 					setTetriminoCellsAsFree();
 					x = myGrid.getCell(refPosX - 1, refPosY - 1, cellImage);
@@ -124,7 +124,7 @@ public class Tetrimino_Z extends Tetrimino {
 				refPosX = y.getXPosition();
 				refPosY = y.getYPosition();	
 				block1 = myGrid.checkMoveVertical(refPosX - 1, refPosY - 1) && myGrid.checkMoveHorizontal(refPosX - 1, refPosY - 1);
-				block2 = myGrid.checkMoveVertical(refPosX , refPosY + 1) && myGrid.checkMoveHorizontal(refPosX, refPosY + 1);
+				block2 = myGrid.checkMoveHorizontal(refPosX, refPosY + 1);
 				if(block1 && block2) {
 					setTetriminoCellsAsFree();
 					x = myGrid.getCell(refPosX - 1, refPosY - 1, cellImage);

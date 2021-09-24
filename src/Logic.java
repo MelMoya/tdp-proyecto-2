@@ -38,7 +38,7 @@ public class Logic {
 		
 		//Tetrimino t1 = new Tetrimino_I(myGrid);
 		//currentTetrimino = t1;
-		Tetrimino t1 = new Tetrimino_J(myGrid);
+		Tetrimino t1 = new Tetrimino_Z(myGrid);
 		//Tetrimino t1 = new Tetrimino_L(myGrid);
 		return t1;
 		
