@@ -272,8 +272,6 @@ public class Tetrimino_J extends Tetrimino{
 			valid = myGrid.checkMoveHorizontal(refPosX + 1, refPosY) &&
 					myGrid.checkMoveHorizontal(refPosX - 1, refPosY + 1);
 			
-			System.out.println(myGrid.checkMoveHorizontal(refPosX + 1, refPosY + 1));
-			
 			if (valid) {
 				
 				setTetriminoCellsAsFree();

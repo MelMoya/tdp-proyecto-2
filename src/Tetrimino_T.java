@@ -6,7 +6,7 @@ public class Tetrimino_T extends Tetrimino {
 	public Tetrimino_T(Grid myGrid) {
 		
 		super(myGrid);			
-		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/redCell.png"));
+		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/violetCell.png"));
 		
 	
 		x = myGrid.getCell(0, 4, cellImage);
@@ -14,10 +14,7 @@ public class Tetrimino_T extends Tetrimino {
 		z = myGrid.getCell(1, 4, cellImage);
 		w = myGrid.getCell(1, 5, cellImage);
 		
-		w.setStateAsTaken();
-		y.setStateAsTaken();
-		z.setStateAsTaken();
-		x.setStateAsTaken();
+		setTetriminoCellsAsTaken();
 	}
 
 	@Override

@@ -320,4 +320,10 @@ public class Tetrimino_I extends Tetrimino{
 		w.setStateAsTaken();
 	}
 
+	@Override
+	public void rotateIZQ() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

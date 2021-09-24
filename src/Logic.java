@@ -33,16 +33,13 @@ public class Logic {
 	
 	public Tetrimino createNewTetrimino() {
 		
-<<<<<<< HEAD
 		//Tetrimino t1 = new Tetrimino_I(myGrid);
-		Tetrimino t1 = new Tetrimino_T(myGrid);
+		//Tetrimino t1 = new Tetrimino_T(myGrid);
 		
-=======
-		Tetrimino t1 = new Tetrimino_I(myGrid);
-		currentTetrimino = t1;
-		//Tetrimino t1 = new Tetrimino_J(myGrid);
+		//Tetrimino t1 = new Tetrimino_I(myGrid);
+		//currentTetrimino = t1;
+		Tetrimino t1 = new Tetrimino_J(myGrid);
 		//Tetrimino t1 = new Tetrimino_L(myGrid);
->>>>>>> 27743af7bb14cd85b0278e645247449f7a912645
 		return t1;
 		
 	}
@@ -94,6 +91,12 @@ public class Logic {
 	public int getCurrentCompletedLines() {
 		
 		return currentCompletedLines;
+	}
+
+
+	public void rotateIZQ() {
+		currentTetrimino.rotateIZQ();
+		
 	}
 	
 	

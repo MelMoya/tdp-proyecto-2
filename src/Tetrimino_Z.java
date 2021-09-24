@@ -7,11 +7,9 @@ public class Tetrimino_Z extends Tetrimino {
 		x = myGrid.getCell(0, 3, cellImage);
 		y = myGrid.getCell(0, 4, cellImage);
 		z = myGrid.getCell(1, 4, cellImage);
-		w = myGrid.getCell(1, 5, cellImage);		
-		w.setStateAsTaken();
-		y.setStateAsTaken();
-		z.setStateAsTaken();
-		x.setStateAsTaken();
+		w = myGrid.getCell(1, 5, cellImage);
+		
+		setTetriminoCellsAsTaken();
 	}
 
 	@Override

@@ -35,5 +35,11 @@ public abstract class Tetrimino {
 		return currentAngle;
 	}
 	
+	public void rotateIZQ() {
+		rotate();
+		rotate();
+		rotate();
+	}
+	
 		
 }
