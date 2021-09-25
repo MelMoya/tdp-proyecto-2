@@ -2,9 +2,6 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
-import java.lang.reflect.*;
-
-
 public class Logic {
 	
 	private int score;
@@ -24,7 +21,6 @@ public class Logic {
 		this.myGUI = myGUI;
 		score = 0;
 		currentCompletedLines = 0;
-
 		myGrid = new Grid(myGUI.getRows(), myGUI.getColumns(), this);
 		currentTetrimino = createNewTetrimino();
 		nextTetrimino = createNewTetrimino();	
@@ -53,6 +49,7 @@ public class Logic {
 	public void addPoints(int lines) {
 		
 		score += 100 * lines;	
+		System.out.println(score);
 	}
 	
 	public void increaseSpeed() {
@@ -72,10 +69,13 @@ public class Logic {
 	
 	public void moveToDown() {
 	
+		int removedLines = 0;
 		if (!currentTetrimino.moveDown()) {
-	
 			currentTetrimino = nextTetrimino;
 			nextTetrimino = createNewTetrimino();
+			removedLines = myGrid.removeLines();
+			currentCompletedLines += removedLines;
+			addPoints(removedLines);
 		}
 		
 	}

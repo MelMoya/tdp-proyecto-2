@@ -193,8 +193,6 @@ public class Tetrimino_I extends Tetrimino {
 		refreshPositions();
 		boolean validMove = false;
 		
-//		if (xx != 20 && yx != 20 && zx != 20 && wx != 20) 
-								//	myGrid.checkMoveVertical(yx + 1, yy) &&myGrid.checkMoveVertical(zx + 1, zy) && myGrid.checkMoveVertical(wx + 1, wy)))	
 			switch (currentAngle) {
 			
 				case 0:
@@ -206,10 +204,8 @@ public class Tetrimino_I extends Tetrimino {
 							(myGrid.checkMoveVertical(wx + 1, wy)));
 			
 				if (validMove) {		
-				//	System.out.println("ENTRE ACA");
 					setTetriminoCellsAsFree();
-					assignNewCellsToTetrimino(xx + 1, xy, yx + 1, yy, zx + 1, zy, wx + 1, wy);
-					
+					assignNewCellsToTetrimino(xx + 1, xy, yx + 1, yy, zx + 1, zy, wx + 1, wy);		
 					setTetriminoCellsAsTaken();
 				}
 				
@@ -227,30 +223,16 @@ public class Tetrimino_I extends Tetrimino {
 					if (validMove) {		
 				
 						setTetriminoCellsAsFree();
-				
-						assignNewCellsToTetrimino(xx + 1, xy, yx + 1, yy, zx + 1, zy, wx + 1, wy);
-					
+						assignNewCellsToTetrimino(xx + 1, xy, yx + 1, yy, zx + 1, zy, wx + 1, wy);	
 						setTetriminoCellsAsTaken();
 					}
 					
 				break;
 			}
-			
-			if (validMove == false) {
-				System.out.println("jeje entre");
-				if (myGrid.checkFullRow(w.getXPosition()))
-					myGrid.clearRow(w.getXPosition());
-			}
-			return validMove;
-	//	else //{
-		//	if (myGrid.checkFullRow(x.getXPosition())) {
-		//		myGrid.clearRow(x.getXPosition());
-		//		refreshPositions();
-		//	}
-	//		myGrid.generateNewTetrimino();
-			
-		}
-	//}
+		
+		return validMove;
+	}
+	
 	
 
 	@Override
@@ -259,13 +241,6 @@ public class Tetrimino_I extends Tetrimino {
 		
 	}
 
-	
-	// rotar izquierda
-	// adaptar todos los tetriminos a la forma en la que esta implementada el tetrimino_i
-	// Tetrimino S
-	// limpiar y acomodar celdas al formar una linea
-	// Generar tetrimino aleatorio
-	// acomodar GUI
 	
 	
 }
