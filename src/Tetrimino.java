@@ -13,7 +13,6 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 	protected Cell x;
 	protected Cell y;
 	protected Cell z;
-	protected Cell referenceCell;
 	
 	protected int refPosX;
 	protected int refPosY;
@@ -46,6 +45,9 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 		
 		return currentAngle;
 	}
+	
+//	public abstract void rotateIZQ();
+	
 	
 	public void rotateIZQ() {
 		rotate();
@@ -92,7 +94,6 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 	
 	@Override
 	public Tetrimino get() {
-		// TODO Auto-generated method stub
 		return this;
 	}
 		

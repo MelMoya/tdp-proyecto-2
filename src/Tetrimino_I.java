@@ -7,7 +7,7 @@ public class Tetrimino_I extends Tetrimino{
 	public Tetrimino_I(Grid myGrid) {
 		
 		super(myGrid);			
-		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/yellowCell.png"));
+		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/cyanCell.png"));
 	
 		
 		

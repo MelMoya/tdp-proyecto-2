@@ -80,7 +80,6 @@ public class Grid {
 		myLogic.refreshGUI(cell.getXPosition(), cell.getYPosition(), null);
 	}
 	
-//	// falta hacer
 	public boolean checkFullRow(int y) {
 	
 			boolean llena = true;
