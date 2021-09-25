@@ -1,13 +1,20 @@
+import java.util.function.Supplier;
+
 import javax.swing.ImageIcon;
 
-public class Tetrimino_I extends Tetrimino {
+public class Tetrimino_I extends Tetrimino{
 	
 	public Tetrimino_I(Grid myGrid) {
 		
 		super(myGrid);			
 		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/yellowCell.png"));
-		cellImage2 = new ImageIcon(TetrisGUI.class.getResource("/img/redCell.png"));
 	
+		
+		
+	}
+	
+	public void initializeTetrimino() {
+		
 		assignNewCellsToTetrimino(0, 3, 0, 4, 0, 5, 0, 6);
 		setTetriminoCellsAsTaken();	
 	}
@@ -240,6 +247,16 @@ public class Tetrimino_I extends Tetrimino {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public Tetrimino get() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+
+
+
 
 	
 	

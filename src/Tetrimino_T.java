@@ -9,6 +9,10 @@ public class Tetrimino_T extends Tetrimino {
 		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/violetCell.png"));
 		
 	
+
+	}
+
+	public void initializeTetrimino() {
 		x = myGrid.getCell(0, 4, cellImage);
 		y = myGrid.getCell(1, 3, cellImage);
 		z = myGrid.getCell(1, 4, cellImage);
@@ -16,7 +20,6 @@ public class Tetrimino_T extends Tetrimino {
 		
 		setTetriminoCellsAsTaken();
 	}
-
 	@Override
 	public void moveToLeft() {
 		boolean validMove = false;
@@ -215,6 +218,8 @@ public class Tetrimino_T extends Tetrimino {
 			
 			return validMove;
 	}
+
+	
 
 // FALTA CONTROL DE MOVIMIENTO EN EL FONDO, PERO ESO SE TIENE QUE CONTROLAR CON EL MOVEDOWN QUE SE HACE EN BASE DEL TIEMPO Y LA VELOCIDAD
 	

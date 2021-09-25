@@ -5,12 +5,14 @@ public class Tetrimino_O extends Tetrimino {
 	public Tetrimino_O(Grid myGrid) {
 		super(myGrid);
 		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/yellowCell.png")); //Cambiar color
+	}
+	
+	public void initializeTetrimino() {
 		
 		x = myGrid.getCell(0, 4, cellImage);
 		y = myGrid.getCell(0, 5, cellImage);
 		z = myGrid.getCell(1, 4, cellImage);
 		w = myGrid.getCell(1, 5, cellImage);
-		
 		setTetriminoCellsAsTaken();
 	}
 
@@ -85,4 +87,5 @@ public class Tetrimino_O extends Tetrimino {
 		return valid;
 	}
 
+	
 }

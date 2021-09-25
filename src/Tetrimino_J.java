@@ -1,18 +1,25 @@
+import java.util.function.Supplier;
+
 import javax.swing.ImageIcon;
 
-public class Tetrimino_J extends Tetrimino{
+public class Tetrimino_J extends Tetrimino implements Supplier<Tetrimino>{
 
 	public Tetrimino_J(Grid myGrid) {
 		super(myGrid);
 		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/blueCell.png"));
 		
+
+
+		
+	}
+	
+	public void initializeTetrimino() {
 		x = myGrid.getCell(0, 5, cellImage);
 		y = myGrid.getCell(1, 5, cellImage);
 		z = myGrid.getCell(2, 5, cellImage);
 		w = myGrid.getCell(2, 4, cellImage);
 		
 		setTetriminoCellsAsTaken();
-		
 	}
 
 	@Override
@@ -382,6 +389,11 @@ public class Tetrimino_J extends Tetrimino{
 		
 	}
 
+	@Override
+	public Tetrimino get() {
+		// TODO Auto-generated method stub
+		return this;
+	}
 
 
 }

@@ -1,4 +1,8 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
+import java.util.function.Supplier;
 
 import javax.swing.ImageIcon;
 
@@ -14,36 +18,37 @@ public class Logic {
 	private Time currentTime;
 	private Grid myGrid;
 	
-	private String s [] = {"Tetimino_I"};
-	
-	
 	public Logic(TetrisGUI myGUI) {
+	
+			
 		this.myGUI = myGUI;
 		score = 0;
 		currentCompletedLines = 0;
 		myGrid = new Grid(myGUI.getRows(), myGUI.getColumns(), this);
 		currentTetrimino = createNewTetrimino();
+		currentTetrimino.initializeTetrimino();
 		nextTetrimino = createNewTetrimino();	
 		currentTime = new Time(this);
 		currentTime.start();
+	
 	}
 	
 	
 	public Tetrimino createNewTetrimino() {
-		
-		//Tetrimino t1 = new Tetrimino_I(myGrid);
-		//Tetrimino t1 = new Tetrimino_T(myGrid);
-		
-
-		//Tetrimino t1 = new Tetrimino_J(myGrid);
-
-		//Tetrimino t1 = new Tetrimino_I(myGrid);
-		//currentTetrimino = t1;
-		//Tetrimino t1 = new Tetrimino_Z(myGrid);
-
-		//Tetrimino t1 = new Tetrimino_L(myGrid);
-		return new Tetrimino_I(myGrid);
-		
+	
+		 ArrayList<Supplier<Tetrimino>> bonuses = new ArrayList<>();
+		 bonuses.add(new Tetrimino_I(myGrid));
+		 bonuses.add(new Tetrimino_J(myGrid));
+		 bonuses.add(new Tetrimino_L(myGrid));	 	
+		 bonuses.add(new Tetrimino_O(myGrid));
+		 bonuses.add(new Tetrimino_S(myGrid));
+		 bonuses.add(new Tetrimino_T(myGrid));
+		 bonuses.add(new Tetrimino_Z(myGrid));
+		 
+		 
+		 Random r = new Random();
+		 
+		 return (Tetrimino) bonuses.get(r.nextInt(bonuses.size()));
 	}
 	
 	public void addPoints(int lines) {
@@ -71,9 +76,10 @@ public class Logic {
 	
 		int removedLines = 0;
 		if (!currentTetrimino.moveDown()) {
+			removedLines = myGrid.removeLines();
 			currentTetrimino = nextTetrimino;
 			nextTetrimino = createNewTetrimino();
-			removedLines = myGrid.removeLines();
+			currentTetrimino.initializeTetrimino();
 			currentCompletedLines += removedLines;
 			addPoints(removedLines);
 		}

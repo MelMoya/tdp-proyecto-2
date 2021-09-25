@@ -1,6 +1,8 @@
+import java.util.function.Supplier;
+
 import javax.swing.ImageIcon;
 
-public abstract class Tetrimino {
+public abstract class Tetrimino implements Supplier<Tetrimino> {
 	
 	protected int currentAngle;
 	protected ImageIcon cellImage;
@@ -29,6 +31,8 @@ public abstract class Tetrimino {
 		currentAngle = 0;
 		this.myGrid = myGrid;
 	}
+	
+	public abstract void initializeTetrimino();
 	
 	public abstract void moveToLeft();
 	
@@ -84,6 +88,12 @@ public abstract class Tetrimino {
 		zy = z.getYPosition();
 		wx = w.getXPosition();
 		wy = w.getYPosition();
+	}
+	
+	@Override
+	public Tetrimino get() {
+		// TODO Auto-generated method stub
+		return this;
 	}
 		
 }
