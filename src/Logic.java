@@ -118,7 +118,6 @@ public class Logic {
 	  }
 		
 
-		
 	}
 	
 	private boolean checkIfCanContinue() {
@@ -141,6 +140,7 @@ public class Logic {
 		currentTetrimino = null;
 		nextTetrimino = null;
 		gameOver = true;
+		currentTime.stopTime();
 	}
 	
 	public void refreshGUI(int y, int x, ImageIcon image) {

@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -15,7 +16,7 @@ public class TetrisGUI extends JFrame {
 	
 	private JPanel graphicPanel;
 	private JLabel[][] graphicCells;
-	private ImageIcon grassIcon = new ImageIcon(TetrisGUI.class.getResource("/img/emptyCell.png"));
+	private ImageIcon grassIcon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(TetrisGUI.class.getResource("/img/emptyCell.png")));
 	
 //	private JLabel currentTime;
 //	private JLabel score; 
@@ -76,8 +77,8 @@ public class TetrisGUI extends JFrame {
 			public void keyPressed(KeyEvent e) {                 
               
 				if (e.getKeyCode() == KeyEvent.VK_DOWN) 
-                    myLogic.moveToDown();
-                    
+					myLogic.moveToDown();
+				            
                 if (e.getKeyCode() == KeyEvent.VK_LEFT)
                 	myLogic.moveToLeft();
    
