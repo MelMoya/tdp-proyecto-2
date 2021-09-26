@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 public abstract class Tetrimino implements Supplier<Tetrimino> {
 	
-	protected int currentAngle;
+	protected int currentAngle = 0;
 	protected ImageIcon cellImage;
 	protected Grid myGrid;
 	
@@ -12,9 +12,6 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 	protected Cell x;
 	protected Cell y;
 	protected Cell z;
-	
-	protected int refPosX;
-	protected int refPosY;
 	
 	protected int xx;
 	protected int xy;
@@ -26,7 +23,6 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 	protected int wy;
 	
 	public Tetrimino(Grid myGrid) {
-		currentAngle = 0;
 		this.myGrid = myGrid;
 	}
 	

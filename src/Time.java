@@ -36,14 +36,9 @@ public class Time extends Thread {
 	@Override
 	public void run() {
 		
-		int counter = 0;
+
 		while (this.running) {
 			try {
-				counter++;
-				if (counter == 10) {
-					logic.increaseSpeed();
-					counter = 0;
-				}
 				Thread.sleep(step);
 				logic.moveToDown();			
 			} catch(InterruptedException e) {}

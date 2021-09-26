@@ -1,18 +1,17 @@
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 import java.util.function.Supplier;
-
 import javax.swing.ImageIcon;
 
 public class Logic {
 	
-	private int score = 0;
 	private int currentCompletedLines = 0;
+	private boolean gameOver = false;
+	private int counter = 0;
+	private int score = 0;
 	private int speed = 1;
 	private int step = 1000;
-	
+
 	private TetrisGUI myGUI;
 	private Tetrimino currentTetrimino;
 	private Tetrimino nextTetrimino;
@@ -20,7 +19,6 @@ public class Logic {
 	private Grid myGrid;
 	
 	public Logic(TetrisGUI myGUI) {
-	
 			
 		this.myGUI = myGUI;
 		myGrid = new Grid(myGUI.getRows(), myGUI.getColumns(), this);
@@ -49,8 +47,11 @@ public class Logic {
 	}
 	
 	public void addPoints(int lines) {
+		
 		int multiplier = 0;
-		switch(lines) {
+		
+		switch (lines) {
+			
 			case 1: 
 				multiplier = 1;
 				break;
@@ -64,15 +65,15 @@ public class Logic {
 				multiplier = 8;
 				break;
 		}
+		
 		score += 100 * multiplier;	
-		System.out.println(score);
 	}
 	
 	public void increaseSpeed() {
 		
-		if (speed < 9 ) {
+		if (speed < 9 && step - 50 > 50 ) {
 			speed++;
-			step -= 100;
+			step -= 50;
 			currentTime.setStep(step);
 		}
 		
@@ -80,37 +81,65 @@ public class Logic {
 	
 	public void moveToLeft() {
 		
-		currentTetrimino.moveToLeft();
+		if (!gameOver)
+			currentTetrimino.moveToLeft();
 	}
 	
 	public void moveToRight() {
 		
-		currentTetrimino.moveToRight();
+		if (!gameOver)
+			currentTetrimino.moveToRight();
 	}
 	
 	public void moveToDown() {
-	
-		int removedLines = 0;
 		
-		if (!currentTetrimino.moveDown()) {
-	
-			removedLines = myGrid.removeLines();
-			currentTetrimino = nextTetrimino;
-			nextTetrimino = createNewTetrimino();
-			currentTetrimino.initializeTetrimino();
-			currentCompletedLines += removedLines;
-			addPoints(removedLines);
+		counter++;
+		if (counter == 10) {
+			increaseSpeed();
+			counter = 0;
 		}
 		
+		int removedLines = 0;
+	 
+		if (!gameOver && !currentTetrimino.moveDown()) {
+			
+			if (!check()) {
+				removedLines = myGrid.removeLines();
+				currentTetrimino = nextTetrimino;
+				nextTetrimino = createNewTetrimino();
+				currentTetrimino.initializeTetrimino();
+				currentCompletedLines += removedLines;
+				addPoints(removedLines);
+			}
+			
+			else 		
+				gameOver();	
+			
+	  }
+		
+
+		
+	}
+	
+	private boolean check() {
+		
+		boolean stop = false;
+		for (int j = 0; j < myGUI.getColumns() && !stop; j++)
+			stop = myGrid.getCell(0, j).getCurrentState() == true;
+		
+		return stop;
+			
 	}
 	
 	public void rotate() {
-		
-		currentTetrimino.rotate();
+		if (!gameOver)
+			currentTetrimino.rotate();
 	}
 	
-	public void gameOver() {
-		
+	public void gameOver() {		
+		currentTetrimino = null;
+		nextTetrimino = null;
+		gameOver = true;
 	}
 	
 	public void refreshGUI(int y, int x, ImageIcon image) {
