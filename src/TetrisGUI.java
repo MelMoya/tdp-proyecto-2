@@ -2,6 +2,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -19,12 +21,20 @@ public class TetrisGUI extends JFrame {
 	private JLabel score; 
 	private JLabel currentCompletedLines;
 	private Logic myLogic;
+	private boolean gameOver = false;
 	
 	public TetrisGUI() {
+
+		this.setSize(500, 1200);
+        this.setMinimumSize(new Dimension(600, 800));
+  
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	
+
 		graphicPanel = new JPanel(new GridLayout(rows, columns, 0, 0));
 		graphicCells = new JLabel[rows][columns];
+		
+		JPanel panel = new JPanel(); 
 		
 		for (int i = 0; i < rows; i++) 
 			for (int j = 0; j < columns; j++) {
@@ -37,35 +47,44 @@ public class TetrisGUI extends JFrame {
 	//	score.setText("0");
 	//	currentBrokenLines.setText("0");
 		
-		setContentPane(graphicPanel);
+		setContentPane(panel);
+		panel.add(graphicPanel);
+		
+
 		
 		super.pack();
+        this.setLocationRelativeTo(null);
 		super.setVisible(true);
 		myLogic = new Logic(this);
 		
+		
+		startListener();
+	}
+
+
+	private void startListener() {
 		this.addKeyListener(new KeyListener(){
-            @Override
-               public void keyPressed(KeyEvent e) {
-                   if(e.getKeyCode() == KeyEvent.VK_DOWN){
-                       myLogic.moveToDown();
-                   }
+			@Override
+		
+			
+			public void keyPressed(KeyEvent e) {                 
+              
+				if (e.getKeyCode() == KeyEvent.VK_DOWN) 
+                    myLogic.moveToDown();
+                    
+                if (e.getKeyCode() == KeyEvent.VK_LEFT)
+                	myLogic.moveToLeft();
+   
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) 
+                    myLogic.moveToRight();
+                
+                if (e.getKeyCode() == KeyEvent.VK_UP) 
+                	myLogic.rotate();
+                
+                if (e.getKeyCode() == KeyEvent.VK_Z) 
+                	myLogic.rotateIZQ();
                    
-                   if(e.getKeyCode() == KeyEvent.VK_LEFT){
-                       myLogic.moveToLeft();
-                   }
-                   
-                   if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-                       myLogic.moveToRight();
-                   }
-                   
-                   if(e.getKeyCode() == KeyEvent.VK_UP) {
-                	   myLogic.rotate();
-                   }
-                   
-                   if(e.getKeyCode() == KeyEvent.VK_Z) {
-                	   myLogic.rotateIZQ();
-                   }
-               }
+              }
 
 			@Override
 			public void keyTyped(KeyEvent e) {

@@ -103,7 +103,7 @@ public class Logic {
 	 
 		if (!gameOver && !currentTetrimino.moveDown()) {
 			
-			if (!check()) {
+			if (!checkIfCanContinue()) {
 				removedLines = myGrid.removeLines();
 				currentTetrimino = nextTetrimino;
 				nextTetrimino = createNewTetrimino();
@@ -121,7 +121,7 @@ public class Logic {
 		
 	}
 	
-	private boolean check() {
+	private boolean checkIfCanContinue() {
 		
 		boolean stop = false;
 		for (int j = 0; j < myGUI.getColumns() && !stop; j++)
@@ -136,7 +136,8 @@ public class Logic {
 			currentTetrimino.rotate();
 	}
 	
-	public void gameOver() {		
+	public void gameOver() {	
+		
 		currentTetrimino = null;
 		nextTetrimino = null;
 		gameOver = true;
@@ -167,5 +168,6 @@ public class Logic {
 		// TODO Auto-generated method stub
 		return speed;
 	}
+	
 	
 }
