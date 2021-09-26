@@ -6,7 +6,7 @@ public class Time extends Thread {
 	private long stopTime = 0;
 	private boolean running;
 	private Logic logic;
-    long starttime= 0;
+    long starttime = 0;
 	
 	public Time(Logic logic) {
 		

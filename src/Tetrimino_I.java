@@ -248,11 +248,6 @@ public class Tetrimino_I extends Tetrimino{
 		
 	}
 
-	@Override
-	public Tetrimino get() {
-		// TODO Auto-generated method stub
-		return this;
-	}
 
 
 

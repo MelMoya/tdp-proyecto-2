@@ -298,10 +298,5 @@ public class Tetrimino_J extends Tetrimino implements Supplier<Tetrimino>{
 		
 	}
 
-	@Override
-	public Tetrimino get() {
-		return this;
-	}
-
 
 }
