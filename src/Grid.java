@@ -6,7 +6,6 @@ public class Grid {
 	private int columns;
 	private Cell cellGrid [][];
 	private Logic myLogic;
-	
 	public Grid(int rows, int columns, Logic myLogic) {
 		
 		this.rows = rows;

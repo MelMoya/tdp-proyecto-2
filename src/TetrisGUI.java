@@ -15,13 +15,12 @@ public class TetrisGUI extends JFrame {
 	
 	private JPanel graphicPanel;
 	private JLabel[][] graphicCells;
-	private ImageIcon grassIcon = new ImageIcon("img/emptyCell.png"); 
+	private ImageIcon grassIcon = new ImageIcon(TetrisGUI.class.getResource("/img/emptyCell.png"));
 	
 	private JLabel currentTime;
 	private JLabel score; 
 	private JLabel currentCompletedLines;
 	private Logic myLogic;
-	private boolean gameOver = false;
 	
 	public TetrisGUI() {
 
@@ -39,7 +38,7 @@ public class TetrisGUI extends JFrame {
 		for (int i = 0; i < rows; i++) 
 			for (int j = 0; j < columns; j++) {
 				graphicCells[i][j] = new JLabel();
-				graphicCells[i][j].setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/emptyCell.png")));
+				graphicCells[i][j].setIcon(grassIcon);
 				graphicPanel.add(graphicCells[i][j]);
 			}
 		
