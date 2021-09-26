@@ -49,8 +49,22 @@ public class Logic {
 	}
 	
 	public void addPoints(int lines) {
-		
-		score += 100 * lines;	
+		int multiplier = 0;
+		switch(lines) {
+			case 1: 
+				multiplier = 1;
+				break;
+			case 2: 
+				multiplier = 2;
+				break;
+			case 3:
+				multiplier = 5;
+				break;
+			case 4:
+				multiplier = 8;
+				break;
+		}
+		score += 100 * multiplier;	
 		System.out.println(score);
 	}
 	
