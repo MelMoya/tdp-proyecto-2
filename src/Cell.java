@@ -6,7 +6,6 @@ public class Cell {
 	private int y;
 	private boolean state;
 	private ImageIcon image;
-	
 	private Grid myGrid;
 	
 	public Cell (int x, int y, ImageIcon image, Grid myGrid) {

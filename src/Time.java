@@ -6,12 +6,14 @@ public class Time extends Thread {
 	private long stopTime = 0;
 	private boolean running;
 	private Logic logic;
+	private int step;
     long starttime = 0;
 	
-	public Time(Logic logic) {
-		
+	public Time(Logic logic, int step) {
+	
 		this.logic = logic;
 		this.running = true;
+		this.step = step;
 	}
 	
 
@@ -34,12 +36,24 @@ public class Time extends Thread {
 	@Override
 	public void run() {
 		
+		int counter = 0;
 		while (this.running) {
 			try {
-				Thread.sleep(1000);
+				counter++;
+				if (counter == 10) {
+					logic.increaseSpeed();
+					counter = 0;
+				}
+				Thread.sleep(step);
 				logic.moveToDown();			
 			} catch(InterruptedException e) {}
 		}
+	}
+
+
+	public void setStep(int step) {
+		this.step = step;
+		
 	}
 
 	

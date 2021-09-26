@@ -6,7 +6,6 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 	
 	protected int currentAngle;
 	protected ImageIcon cellImage;
-	protected ImageIcon cellImage2;
 	protected Grid myGrid;
 	
 	protected Cell w;
@@ -47,7 +46,6 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 	}
 	
 //	public abstract void rotateIZQ();
-	
 	
 	public void rotateIZQ() {
 		rotate();

@@ -8,9 +8,10 @@ import javax.swing.ImageIcon;
 
 public class Logic {
 	
-	private int score;
-	private int currentCompletedLines;
-	private int speed;
+	private int score = 0;
+	private int currentCompletedLines = 0;
+	private int speed = 1;
+	private int step = 1000;
 	
 	private TetrisGUI myGUI;
 	private Tetrimino currentTetrimino;
@@ -22,33 +23,29 @@ public class Logic {
 	
 			
 		this.myGUI = myGUI;
-		score = 0;
-		currentCompletedLines = 0;
 		myGrid = new Grid(myGUI.getRows(), myGUI.getColumns(), this);
 		currentTetrimino = createNewTetrimino();
 		currentTetrimino.initializeTetrimino();
 		nextTetrimino = createNewTetrimino();	
-		currentTime = new Time(this);
+		currentTime = new Time(this, step);
 		currentTime.start();
-	
 	}
 	
 	
 	public Tetrimino createNewTetrimino() {
 	
-		 ArrayList<Supplier<Tetrimino>> bonuses = new ArrayList<>();
-		 bonuses.add(new Tetrimino_I(myGrid));
-		 bonuses.add(new Tetrimino_J(myGrid));
-		 bonuses.add(new Tetrimino_L(myGrid));	 	
-		 bonuses.add(new Tetrimino_O(myGrid));
-		 bonuses.add(new Tetrimino_S(myGrid));
-		 bonuses.add(new Tetrimino_T(myGrid));
-		 bonuses.add(new Tetrimino_Z(myGrid));
-		 
+		 ArrayList<Supplier<Tetrimino>> availableTetriminos = new ArrayList<>();
+		 availableTetriminos.add(new Tetrimino_I(myGrid));
+		 availableTetriminos.add(new Tetrimino_J(myGrid));
+		 availableTetriminos.add(new Tetrimino_L(myGrid));	 	
+		 availableTetriminos.add(new Tetrimino_O(myGrid));
+		 availableTetriminos.add(new Tetrimino_S(myGrid));
+		 availableTetriminos.add(new Tetrimino_T(myGrid));
+		 availableTetriminos.add(new Tetrimino_Z(myGrid));
 		 
 		 Random r = new Random();
 		 
-		 return (Tetrimino) bonuses.get(r.nextInt(bonuses.size()));
+		 return (Tetrimino) availableTetriminos.get(r.nextInt(availableTetriminos.size()));
 	}
 	
 	public void addPoints(int lines) {
@@ -59,7 +56,12 @@ public class Logic {
 	
 	public void increaseSpeed() {
 		
-		speed++;
+		if (speed < 9 ) {
+			speed++;
+			step -= 100;
+			currentTime.setStep(step);
+		}
+		
 	}
 	
 	public void moveToLeft() {
@@ -75,7 +77,9 @@ public class Logic {
 	public void moveToDown() {
 	
 		int removedLines = 0;
+		
 		if (!currentTetrimino.moveDown()) {
+	
 			removedLines = myGrid.removeLines();
 			currentTetrimino = nextTetrimino;
 			nextTetrimino = createNewTetrimino();
@@ -114,6 +118,11 @@ public class Logic {
 	public void rotateIZQ() {
 		currentTetrimino.rotateIZQ();
 		
+	}
+
+	public int getSpeed() {
+		// TODO Auto-generated method stub
+		return speed;
 	}
 	
 }
