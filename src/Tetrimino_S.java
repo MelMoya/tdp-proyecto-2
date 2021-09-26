@@ -2,9 +2,6 @@ import javax.swing.ImageIcon;
 
 public class Tetrimino_S extends Tetrimino{
 
-	ImageIcon cellGreen = new ImageIcon((TetrisGUI.class.getResource("/img/greenCell.png")));
-    ImageIcon cellBlue = new ImageIcon((TetrisGUI.class.getResource("/img/blueCell.png")));
-    ImageIcon cellYellow = new ImageIcon((TetrisGUI.class.getResource("/img/yellowCell.png")));
 	public Tetrimino_S(Grid myGrid) {
 		super(myGrid);
 		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/greenCell.png"));
@@ -13,9 +10,9 @@ public class Tetrimino_S extends Tetrimino{
 
 	public void initializeTetrimino() {
 		x = myGrid.getCell(0, 5, cellImage);
-		y = myGrid.getCell(0, 4, cellGreen);
-		z = myGrid.getCell(1, 4, cellBlue);
-		w = myGrid.getCell(1, 3, cellYellow);		
+		y = myGrid.getCell(0, 4, cellImage);
+		z = myGrid.getCell(1, 4, cellImage);
+		w = myGrid.getCell(1, 3, cellImage);		
 		setTetriminoCellsAsTaken();
 	}
 	

@@ -47,7 +47,6 @@ public class Logic {
 	}
 	
 	public void addPoints(int lines) {
-		
 		int multiplier = 0;
 		
 		switch (lines) {
@@ -66,7 +65,8 @@ public class Logic {
 				break;
 		}
 		
-		score += 100 * multiplier;	
+		score += 100 * multiplier;
+		myGUI.refreshDataGUI(score, currentCompletedLines);
 	}
 	
 	public void increaseSpeed() {
@@ -147,6 +147,9 @@ public class Logic {
 	//	System.out.println(currentTime.getElapsedTime() / 600);
 		myGUI.draw(x, y, image);
 	}
+	public void refreshData(int s,int l) {
+		myGUI.refreshDataGUI(s,l);
+	}
 	
 	public int getCurrentScore() {
 		
@@ -168,6 +171,6 @@ public class Logic {
 		// TODO Auto-generated method stub
 		return speed;
 	}
-	
+
 	
 }

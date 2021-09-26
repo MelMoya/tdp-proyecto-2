@@ -17,9 +17,11 @@ public class TetrisGUI extends JFrame {
 	private JLabel[][] graphicCells;
 	private ImageIcon grassIcon = new ImageIcon(TetrisGUI.class.getResource("/img/emptyCell.png"));
 	
-	private JLabel currentTime;
-	private JLabel score; 
-	private JLabel currentCompletedLines;
+//	private JLabel currentTime;
+//	private JLabel score; 
+//	private JLabel currentCompletedLines;
+	private JLabel lblScore;
+	private JLabel lblLines;
 	private Logic myLogic;
 	
 	public TetrisGUI() {
@@ -30,11 +32,12 @@ public class TetrisGUI extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		graphicPanel = new JPanel(new GridLayout(rows, columns, 0, 0));
+		graphicPanel = new JPanel(new GridLayout(rows, columns, 0,0));
+		graphicPanel.setBounds(182, 11, 229, 450);
 		graphicCells = new JLabel[rows][columns];
 		
 		JPanel panel = new JPanel(); 
-		
+		graphicPanel.setPreferredSize(new Dimension(229,450));
 		for (int i = 0; i < rows; i++) 
 			for (int j = 0; j < columns; j++) {
 				graphicCells[i][j] = new JLabel();
@@ -42,12 +45,18 @@ public class TetrisGUI extends JFrame {
 				graphicPanel.add(graphicCells[i][j]);
 			}
 		
-	//	currentTime.setText("0");
-	//	score.setText("0");
-	//	currentBrokenLines.setText("0");
 		
 		setContentPane(panel);
+		panel.setLayout(null);
+		lblScore = new JLabel("0");
+		lblScore.setBounds(31, 59, 46, 14);
+		panel.add(lblScore);
+
 		panel.add(graphicPanel);
+		
+		lblLines = new JLabel("0");
+		lblLines.setBounds(31, 99, 46, 14);
+		panel.add(lblLines);
 		
 
 		
@@ -55,8 +64,6 @@ public class TetrisGUI extends JFrame {
         this.setLocationRelativeTo(null);
 		super.setVisible(true);
 		myLogic = new Logic(this);
-		
-		
 		startListener();
 	}
 
@@ -122,6 +129,11 @@ public class TetrisGUI extends JFrame {
 		
 		return columns;
 	}
-	
-	
+
+
+	public void refreshDataGUI(int s, int l) {
+		lblScore.setText(String.valueOf(s));
+		lblLines.setText(String.valueOf(l));
+		
+	}
 }
