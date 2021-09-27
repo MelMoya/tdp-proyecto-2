@@ -8,12 +8,11 @@ public class Tetrimino_Z extends Tetrimino {
 	}
 
 	public void initializeTetrimino() {
-		x = myGrid.getCell(0, 3, cellImage);
-		y = myGrid.getCell(0, 4, cellImage);
-		z = myGrid.getCell(1, 4, cellImage);
-		w = myGrid.getCell(1, 5, cellImage);		
+		
+		assignNewCellsToTetrimino(0, 3, 0, 4, 1, 4, 1, 5);
 		setTetriminoCellsAsTaken();
 	}
+	
 	@Override
 	public void moveToLeft() {
 		refreshPositions();
@@ -162,6 +161,12 @@ public class Tetrimino_Z extends Tetrimino {
 			}		
 			return block1 && block2 && block3;
 		
+	}
+	
+	public void rotateIZQ() { // MODIFICAR
+		rotate();
+		rotate();
+		rotate();
 	}
 
 

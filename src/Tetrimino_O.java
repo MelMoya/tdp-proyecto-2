@@ -67,6 +67,10 @@ public class Tetrimino_O extends Tetrimino {
 		
 		return valid;
 	}
+	
+	public void rotateIZQ() {
+		//No rota
+	}
 
 	
 }

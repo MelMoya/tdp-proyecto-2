@@ -7,15 +7,14 @@ public class Tetrimino_T extends Tetrimino {
 		
 		super(myGrid);			
 		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/violetCell.png"));
-		
 	
-
 	}
 
 	public void initializeTetrimino() {
 		assignNewCellsToTetrimino(0, 4, 1, 3, 1, 4, 1, 5);
 		setTetriminoCellsAsTaken();
 	}
+	
 	@Override
 	public void moveToLeft() {
 		refreshPositions();
@@ -169,5 +168,11 @@ public class Tetrimino_T extends Tetrimino {
 			}
 			
 			return validMove;
+	}
+	
+	public void rotateIZQ() { //MODIFICAR
+		rotate();
+		rotate();
+		rotate();
 	}
 }

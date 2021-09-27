@@ -9,10 +9,8 @@ public class Tetrimino_S extends Tetrimino{
 	}
 
 	public void initializeTetrimino() {
-		x = myGrid.getCell(0, 5, cellImage);
-		y = myGrid.getCell(0, 4, cellImage);
-		z = myGrid.getCell(1, 4, cellImage);
-		w = myGrid.getCell(1, 3, cellImage);		
+		
+		assignNewCellsToTetrimino(0, 5, 0, 4, 1, 4, 1, 3);
 		setTetriminoCellsAsTaken();
 	}
 	
@@ -162,6 +160,12 @@ public class Tetrimino_S extends Tetrimino{
 				setTetriminoCellsAsTaken();
 			}		
 			return block1 && block2 && block3;
+	}
+	
+	public void rotateIZQ() { // MODIFICAR
+		rotate();
+		rotate();
+		rotate();
 	}
 	
 }

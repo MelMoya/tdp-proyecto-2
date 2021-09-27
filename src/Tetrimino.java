@@ -41,13 +41,7 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 		return currentAngle;
 	}
 	
-//	public abstract void rotateIZQ();
-	
-	public void rotateIZQ() {
-		rotate();
-		rotate();
-		rotate();
-	}
+	public abstract void rotateIZQ();
 	
 	protected void setTetriminoCellsAsFree() {
 		

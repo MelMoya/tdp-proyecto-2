@@ -244,7 +244,7 @@ public class Tetrimino_I extends Tetrimino{
 
 	@Override
 	public void rotateIZQ() {
-		// TODO Auto-generated method stub
+		this.rotate();
 		
 	}
 
