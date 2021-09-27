@@ -21,12 +21,13 @@ public class Logic {
 	public Logic(TetrisGUI myGUI) {
 			
 		this.myGUI = myGUI;
+		currentTime = new Time(this, step);
+		currentTime.start();
 		myGrid = new Grid(myGUI.getRows(), myGUI.getColumns(), this);
 		currentTetrimino = createNewTetrimino();
 		currentTetrimino.initializeTetrimino();
 		nextTetrimino = createNewTetrimino();	
-		currentTime = new Time(this, step);
-		currentTime.start();
+
 	}
 	
 	
@@ -141,10 +142,11 @@ public class Logic {
 		nextTetrimino = null;
 		gameOver = true;
 		currentTime.stopTime();
+		myGUI.showGameOver();
 	}
 	
 	public void refreshGUI(int y, int x, ImageIcon image) {
-	//	System.out.println(currentTime.getElapsedTime() / 600);
+		//System.out.println(currentTime.getElapsedTime() / 600);
 		myGUI.draw(x, y, image);
 	}
 	public void refreshData(int s,int l) {

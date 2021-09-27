@@ -1,13 +1,20 @@
+
 import javax.swing.ImageIcon;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.Color;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.Font;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class TetrisGUI extends JFrame {
 	
@@ -21,12 +28,16 @@ public class TetrisGUI extends JFrame {
 //	private JLabel currentTime;
 //	private JLabel score; 
 //	private JLabel currentCompletedLines;
+	private JLabel lblScoreDisplay;
+	private JLabel lblLinesDisplay;
+	private Logic myLogic;
 	private JLabel lblScore;
 	private JLabel lblLines;
-	private Logic myLogic;
+	private JLabel lblGameOver;
 	
 	public TetrisGUI() {
-
+		setForeground(Color.BLACK);
+		setUndecorated(true);
 		this.setSize(500, 1200);
         this.setMinimumSize(new Dimension(600, 800));
   
@@ -34,11 +45,10 @@ public class TetrisGUI extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		graphicPanel = new JPanel(new GridLayout(rows, columns, 0,0));
-		graphicPanel.setBounds(182, 11, 229, 450);
+		graphicPanel.setBounds(30,36, 300,630);
 		graphicCells = new JLabel[rows][columns];
 		
 		JPanel panel = new JPanel(); 
-		graphicPanel.setPreferredSize(new Dimension(229,450));
 		for (int i = 0; i < rows; i++) 
 			for (int j = 0; j < columns; j++) {
 				graphicCells[i][j] = new JLabel();
@@ -49,20 +59,55 @@ public class TetrisGUI extends JFrame {
 		
 		setContentPane(panel);
 		panel.setLayout(null);
-		lblScore = new JLabel("0");
-		lblScore.setBounds(31, 59, 46, 14);
-		panel.add(lblScore);
+		
+		lblGameOver = new JLabel("");
+		lblGameOver.setBounds(-20, 11, 610, 307);
+		lblGameOver.setVisible(false);
+		panel.add(lblGameOver);
+		lblGameOver.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/gameOverSign.png")));
+		lblScoreDisplay = new JLabel("0");
+		lblScoreDisplay.setFont(new Font("Agency FB", Font.PLAIN, 17));
+		lblScoreDisplay.setForeground(Color.WHITE);
+		lblScoreDisplay.setBounds(431, 407, 46, 33);
+		panel.add(lblScoreDisplay);
 
 		panel.add(graphicPanel);
 		
-		lblLines = new JLabel("0");
-		lblLines.setBounds(31, 99, 46, 14);
-		panel.add(lblLines);
+		lblLinesDisplay = new JLabel("0");
+		lblLinesDisplay.setFont(new Font("Agency FB", Font.PLAIN, 17));
+		lblLinesDisplay.setForeground(Color.WHITE);
+		lblLinesDisplay.setBounds(431, 536, 46, 33);
+		panel.add(lblLinesDisplay);
 		
 
 		
 		super.pack();
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(Color.BLACK);
+        
+        lblScore = new JLabel("Score");
+        lblScore.setFont(new Font("Agency FB", Font.PLAIN, 21));
+        lblScore.setForeground(Color.WHITE);
+        lblScore.setBounds(373, 355, 125, 57);
+        panel.add(lblScore);
+        
+        lblLines = new JLabel("Lines");
+        lblLines.setForeground(Color.WHITE);
+        lblLines.setFont(new Font("Agency FB", Font.PLAIN, 21));
+        lblLines.setBounds(373, 468, 125, 57);
+        panel.add(lblLines);
+        
+        JLabel lblClose = new JLabel("");
+        lblClose.addMouseMotionListener(new MouseMotionAdapter() {
+           public void mouseDragged(MouseEvent arg0) {
+        	  dispose();
+        	  System.exit(EXIT_ON_CLOSE);
+           }
+       });
+        lblClose.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/close.png")));
+        lblClose.setBounds(550, 11, 46, 30);
+        panel.add(lblClose);
+        
 		super.setVisible(true);
 		myLogic = new Logic(this);
 		startListener();
@@ -90,7 +135,7 @@ public class TetrisGUI extends JFrame {
                 
                 if (e.getKeyCode() == KeyEvent.VK_Z) 
                 	myLogic.rotateIZQ();
-                   
+
               }
 
 			@Override
@@ -133,8 +178,14 @@ public class TetrisGUI extends JFrame {
 
 
 	public void refreshDataGUI(int s, int l) {
-		lblScore.setText(String.valueOf(s));
-		lblLines.setText(String.valueOf(l));
+		lblScoreDisplay.setText(String.valueOf(s));
+		lblLinesDisplay.setText(String.valueOf(l));
+		
+	}
+
+
+	public void showGameOver() {
+		lblGameOver.setVisible(true);
 		
 	}
 }
