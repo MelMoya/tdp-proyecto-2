@@ -1,5 +1,3 @@
-import java.util.function.Supplier;
-
 import javax.swing.ImageIcon;
 
 public class Tetrimino_I extends Tetrimino{
@@ -8,9 +6,6 @@ public class Tetrimino_I extends Tetrimino{
 		
 		super(myGrid);			
 		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/cells/cyanCell.png"));
-	
-		
-		
 	}
 	
 	public void initializeTetrimino() {
@@ -123,11 +118,12 @@ public class Tetrimino_I extends Tetrimino{
 
 
 					validRotation = ((zx > 1 && zx + 1 < 21) && (wx > 1 && wx + 1 < 21)) &&
-												   myGrid.checkMoveVertical(zx - 2, zy) &&
-												   myGrid.checkMoveVertical(zx - 1, zy) &&
-									 			   myGrid.checkMoveVertical(zx + 1, zy);
+												    myGrid.checkMoveVertical(zx - 2, zy) &&
+												    myGrid.checkMoveVertical(zx - 1, zy) &&
+									 			    myGrid.checkMoveVertical(zx + 1, zy);
 
 					if (validRotation) {						
+						
 						setTetriminoCellsAsFree();
 						assignNewCellsToTetrimino(zx - 2, zy, zx - 1, zy, zx, zy, zx + 1, zy);	
 						setTetriminoCellsAsTaken();		
@@ -157,9 +153,9 @@ public class Tetrimino_I extends Tetrimino{
 			case 180:
 
 					validRotation = ((yx > 1 && yx + 1 < 21) && (wx > 1 && wx + 1 < 21)) &&
-									myGrid.checkMoveVertical(yx - 2, yy) &&
-									myGrid.checkMoveVertical(yx - 1, yy) && 
-									myGrid.checkMoveVertical(yx + 1, yy);
+													myGrid.checkMoveVertical(yx - 2, yy) &&
+													myGrid.checkMoveVertical(yx - 1, yy) && 
+													myGrid.checkMoveVertical(yx + 1, yy);
 					
 					if (validRotation) {
 						
@@ -206,9 +202,9 @@ public class Tetrimino_I extends Tetrimino{
 				case 180:
 				
 				validMove = ((myGrid.checkMoveVertical(xx + 1, xy)) &&
-							(myGrid.checkMoveVertical(yx + 1, yy)) &&
-							(myGrid.checkMoveVertical(zx + 1, zy)) &&
-							(myGrid.checkMoveVertical(wx + 1, wy)));
+							 (myGrid.checkMoveVertical(yx + 1, yy)) &&
+							 (myGrid.checkMoveVertical(zx + 1, zy)) &&
+							 (myGrid.checkMoveVertical(wx + 1, wy)));
 			
 				if (validMove) {		
 					setTetriminoCellsAsFree();
@@ -244,15 +240,8 @@ public class Tetrimino_I extends Tetrimino{
 
 	@Override
 	public void rotateIZQ() {
-		this.rotate();
 		
+		this.rotate();
 	}
 
-
-
-
-
-
-	
-	
 }

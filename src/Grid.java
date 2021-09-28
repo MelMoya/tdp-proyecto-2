@@ -6,20 +6,19 @@ public class Grid {
 	private int columns;
 	private Cell cellGrid [][];
 	private Logic myLogic;
+	
 	public Grid(int rows, int columns, Logic myLogic) {
 		
 		this.rows = rows;
 		this.columns = columns;
-		
 		this.myLogic = myLogic;
 		cellGrid = new Cell [rows][columns];
 	
 		for (int i = 0; i < rows; i++) 
-			for (int j = 0; j < columns; j++) {
+			for (int j = 0; j < columns; j++) 
 				cellGrid[i][j] = new Cell(i,j, null, this);
-			}
-			
 	}
+	
 	
 	public int removeLines() {
 		
@@ -77,6 +76,16 @@ public class Grid {
 	public void releaseCell(Cell cell) {
 
 		myLogic.refreshGUI(cell.getXPosition(), cell.getYPosition(), null);
+	}
+	
+	public void restartGrid() {
+		System.out.println("Restart grid");
+		for (int i = 0; i < rows; i++) 
+			for (int j = 0; j < columns; j++) {
+				cellGrid[i][j] = new Cell(i,j, null, this);
+				cellGrid[i][j].setStateAsFree();
+			}
+		
 	}
 	
 	public boolean checkFullRow(int y) {

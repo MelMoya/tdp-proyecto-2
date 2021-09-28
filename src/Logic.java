@@ -5,32 +5,32 @@ import javax.swing.ImageIcon;
 
 public class Logic {
 	
-	private int currentCompletedLines = 0;
+	private Grid myGrid;
+	private TetrisGUI myGUI;
+	private Tetrimino currentTetrimino;
+	private Tetrimino nextTetrimino;
+	private Time myTime;
+	
 	private boolean gameOver = false;
 	private int counter = 0;
+	private int currentCompletedLines = 0;
+	private String currentTime = "0:0";
 	private int score = 0;
 	private int speed = 1;
 	private int step = 1000;
 
-	private TetrisGUI myGUI;
-	private Tetrimino currentTetrimino;
-	private Tetrimino nextTetrimino;
-	private Time currentTime;
-	private Grid myGrid;
-	
+
 	public Logic(TetrisGUI myGUI) {
 			
 		this.myGUI = myGUI;
-		currentTime = new Time(this, step);
-		currentTime.start();
+		myTime = new Time(this, step);
+		myTime.start();
 		myGrid = new Grid(myGUI.getRows(), myGUI.getColumns(), this);
 		currentTetrimino = createNewTetrimino();
 		currentTetrimino.initializeTetrimino();
 		nextTetrimino = createNewTetrimino();	
-
 	}
-	
-	
+		
 	public Tetrimino createNewTetrimino() {
 	
 		 ArrayList<Supplier<Tetrimino>> availableTetriminos = new ArrayList<>();
@@ -48,6 +48,7 @@ public class Logic {
 	}
 	
 	public void addPoints(int lines) {
+		
 		int multiplier = 0;
 		
 		switch (lines) {
@@ -64,7 +65,7 @@ public class Logic {
 			case 4:
 				multiplier = 8;
 				break;
-		}
+	}
 		
 		score += 100 * multiplier;
 		myGUI.refreshDataGUI(score, currentCompletedLines);
@@ -75,7 +76,7 @@ public class Logic {
 		if (speed < 9 && step - 50 > 50 ) {
 			speed++;
 			step -= 50;
-			currentTime.setStep(step);
+			myTime.setStep(step);
 		}
 		
 	}
@@ -93,7 +94,6 @@ public class Logic {
 	}
 	
 	public void moveToDown() {
-		
 		counter++;
 		if (counter == 10) {
 			increaseSpeed();
@@ -108,6 +108,7 @@ public class Logic {
 				removedLines = myGrid.removeLines();
 				currentTetrimino = nextTetrimino;
 				nextTetrimino = createNewTetrimino();
+				myGUI.refreshNextTetriminoLabel(nextTetrimino.getClass().getName());
 				currentTetrimino.initializeTetrimino();
 				currentCompletedLines += removedLines;
 				addPoints(removedLines);
@@ -127,13 +128,19 @@ public class Logic {
 		for (int j = 0; j < myGUI.getColumns() && !stop; j++)
 			stop = myGrid.getCell(0, j).getCurrentState() == true;
 		
-		return stop;
-			
+		return stop;		
 	}
 	
 	public void rotate() {
+		
 		if (!gameOver)
 			currentTetrimino.rotate();
+	}
+	
+	public void rotateIZQ() {
+
+		if (!gameOver)
+			currentTetrimino.rotateIZQ();
 	}
 	
 	public void gameOver() {	
@@ -141,17 +148,32 @@ public class Logic {
 		currentTetrimino = null;
 		nextTetrimino = null;
 		gameOver = true;
-		currentTime.stopTime();
+		myTime.stopTime();
 		myGUI.showGameOver();
 	}
 	
 	public void refreshGUI(int y, int x, ImageIcon image) {
-		//System.out.println(currentTime.getElapsedTime() / 600);
 		myGUI.draw(x, y, image);
 	}
+	
 	public void refreshData(int s,int l) {
 		myGUI.refreshDataGUI(s,l);
 	}
+	
+	public void restartLogic() {
+		currentCompletedLines = 0;
+		gameOver = false;
+		counter = 0;
+		score = 0;
+		speed = 1;
+		step = 1000;
+		myGrid.restartGrid();
+		currentTetrimino = createNewTetrimino();
+		nextTetrimino = createNewTetrimino();
+		currentTetrimino.initializeTetrimino();
+		//RESTART TIMER
+	}
+	
 	
 	public int getCurrentScore() {
 		
@@ -163,15 +185,30 @@ public class Logic {
 		return currentCompletedLines;
 	}
 
-
-	public void rotateIZQ() {
-		currentTetrimino.rotateIZQ();
-		
+	public int getSpeed() {
+		return speed;
 	}
 
-	public int getSpeed() {
-		// TODO Auto-generated method stub
-		return speed;
+	public String getNameOfNextTetrimino() {
+		
+		return nextTetrimino.getClass().getName();
+		
+	}
+	
+//	public String getCurrentTime() {
+//		
+//		int seconds = (int) (this.currentTime / 1000);
+//		
+//		int minutes = (int) seconds / 60;
+//		
+//		return minutes + ":" + seconds;
+//	}
+
+	public void setTime(String time) {
+		
+		this.currentTime = time;
+		
+		myGUI.refreshTime(currentTime);
 	}
 
 	

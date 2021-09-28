@@ -13,8 +13,8 @@ public class Cell {
 		this.x = x;
 		this.y = y;
 		this.image = image; 
-		this.myGrid = myGrid;
 		state = false;
+		this.myGrid = myGrid;
 	}
 	
 	public Cell (int x, int y, ImageIcon image) {
@@ -27,13 +27,11 @@ public class Cell {
 	public void setX(int x) {
 		
 		this.x = x;
-	//	myGrid.occupyCell(this);
 	}
 	
 	public void setY(int y) {
 		
 		this.y = y;
-	//	myGrid.occupyCell(this);
 	}
 	
 	public void setStateAsTaken() {
@@ -73,6 +71,5 @@ public class Cell {
 		
 		return image;
 	}
-
 
 }
