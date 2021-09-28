@@ -3,7 +3,7 @@ import javax.swing.ImageIcon;
 public class Tetrimino_Z extends Tetrimino {
 	public Tetrimino_Z(Grid myGrid) {
 		super(myGrid);		
-		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/redCell.png"));
+		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/cells/redCell.png"));
 
 	}
 

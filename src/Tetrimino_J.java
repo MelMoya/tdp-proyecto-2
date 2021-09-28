@@ -6,7 +6,7 @@ public class Tetrimino_J extends Tetrimino implements Supplier<Tetrimino>{
 
 	public Tetrimino_J(Grid myGrid) {
 		super(myGrid);
-		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/blueCell.png"));
+		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/cells/blueCell.png"));
 	}
 	
 	public void initializeTetrimino() {
