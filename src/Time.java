@@ -1,6 +1,6 @@
 public class Time extends Thread {
 
-	private long elapsed = 0;
+	private int milliseconds = 0;
 	private int seconds = 0;
 	private int minutes = 0;
 	private long startTime = 0;
@@ -43,7 +43,8 @@ public class Time extends Thread {
 	}
 
 	public long getElapsedTime() {
-		    
+		long elapsed;
+		
 		if (running) 
 	         elapsed = (System.currentTimeMillis() - startTime);
 	    else 
@@ -54,13 +55,13 @@ public class Time extends Thread {
 	
 	private String getElapsedTimeString() {
 		
-		seconds = (int) (getElapsedTime() / 1000);
-		if (seconds > 60) {
-			seconds -= seconds * 60;
-			minutes++;
-		}
 		
-		return minutes + ":" + seconds;
+		milliseconds = (int) (getElapsedTime());
+		seconds = (int) (milliseconds / 1000) % 60 ;
+		minutes = (int) ((milliseconds / (1000*60)) % 60);
+		
+		
+		return minutes + ":" + "0" + seconds;
 			
  		
 	}
