@@ -163,9 +163,7 @@ public class Tetrimino_Z extends Tetrimino {
 		
 	}
 	
-	public void rotateIZQ() { // MODIFICAR
-		rotate();
-		rotate();
+	public void rotateIZQ() { 
 		rotate();
 	}
 

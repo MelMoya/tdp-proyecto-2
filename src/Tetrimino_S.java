@@ -162,9 +162,7 @@ public class Tetrimino_S extends Tetrimino{
 			return block1 && block2 && block3;
 	}
 	
-	public void rotateIZQ() { // MODIFICAR
-		rotate();
-		rotate();
+	public void rotateIZQ() { 
 		rotate();
 	}
 	

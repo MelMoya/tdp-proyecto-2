@@ -170,68 +170,66 @@ public class Tetrimino_T extends Tetrimino {
 			return validMove;
 	}
 	
-	public void rotateIZQ() { //MODIFICAR
-		rotate();
-		rotate();
-		rotate();
+	public void rotateIZQ() { 
+		
 		refreshPositions();		
 		boolean validRotation = false;
 								
-			switch (currentAngle) {
-				case 0: 
-					
-					validRotation = myGrid.checkMoveVertical(zx-1,zy);
-					if (validRotation) {
-										
-						setTetriminoCellsAsFree();
-						assignNewCellsToTetrimino(wx, wy, xx, xy, zx, zy, zx - 1, zy);
-						setTetriminoCellsAsTaken();
-						currentAngle = 270;
-					}
-						
-					break;
+		switch (currentAngle) {
+			case 0: 
 				
-				case 90:
-					validRotation = myGrid.checkMoveHorizontal(zx, zy+1);
-					if (validRotation) {
-										
-						setTetriminoCellsAsFree();
-						assignNewCellsToTetrimino(wx, wy, xx, xy, zx, zy, zx , zy+1);
-						setTetriminoCellsAsTaken();
-						currentAngle = 0;
-					}
-						
-					break;
+				validRotation = myGrid.checkMoveVertical(zx + 1,zy);
+				if (validRotation) {
+									
+					setTetriminoCellsAsFree();
+					assignNewCellsToTetrimino(yx, yy, zx + 1, zy, zx, zy, xx, xy);
+					setTetriminoCellsAsTaken();
+					currentAngle = 270;
+				}
 					
-
+				break;
 				
-				case 180:
+			case 90:
+				validRotation = myGrid.checkMoveHorizontal(zx, zy - 1);
+				if (validRotation) {
+									
+					setTetriminoCellsAsFree();
+					assignNewCellsToTetrimino(yx, yy, zx, zy - 1, zx, zy, xx, xy);
+					setTetriminoCellsAsTaken();
+					currentAngle = 0;
+				}
 					
-					validRotation = myGrid.checkMoveVertical(zx + 1, zy); 
-					if (validRotation) {
-										
-						setTetriminoCellsAsFree();
-						assignNewCellsToTetrimino(wx, wy, xx, xy, zx, zy, zx + 1, zy);
-						setTetriminoCellsAsTaken();
-						currentAngle = 90;
-					}
-						
-					break;
+				break;
 				
-				case 270:
+				
+			case 180:
+				
+				validRotation = myGrid.checkMoveVertical(zx - 1, zy); 
+				if (validRotation) {
+									
+					setTetriminoCellsAsFree();
+					assignNewCellsToTetrimino(yx, yy, zx - 1, zy, zx, zy, xx, xy);
+					setTetriminoCellsAsTaken();
+					currentAngle = 90;
+				}
 					
-					validRotation = myGrid.checkMoveHorizontal(zx, zy-1);
-					if (validRotation) {
-						
-						setTetriminoCellsAsFree();
-						assignNewCellsToTetrimino(wx, wy, xx, xy, zx, zy, zx, zy-1);
-						setTetriminoCellsAsTaken();
-						currentAngle = 180;
-					}
-						
-					break;
+				break;
+			
+			case 270:
 				
-			}
+				validRotation = myGrid.checkMoveHorizontal(zx, zy + 1);
+				if (validRotation) {
+					
+					setTetriminoCellsAsFree();
+					assignNewCellsToTetrimino(yx, yy, zx, zy + 1, zx, zy, xx, xy);
+					setTetriminoCellsAsTaken();
+					currentAngle = 180;
+				}
+					
+				break;
+			
+		}
 		
 	}
+	
 }
