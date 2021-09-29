@@ -31,7 +31,8 @@ public class TetrisGUI extends JFrame {
 	private JLabel lblRetry;
 	private JLabel lblScore;
 	private JLabel lblScoreText;
-	private JLabel lblTime = new JLabel("0:0");; 
+	private JLabel lblTime = new JLabel("0:0");
+	private JLabel lblfinalResults;
 	
 	public TetrisGUI() {
 	
@@ -84,6 +85,13 @@ public class TetrisGUI extends JFrame {
 		lblGameOver.setBounds(10, 307, 565, 130);
 		lblGameOver.setVisible(false);
 		panel.add(lblGameOver);	
+		
+		lblfinalResults = new JLabel("", SwingConstants.CENTER);
+		lblfinalResults.setForeground(Color.RED);
+		lblfinalResults.setFont(new Font("Agency FB", Font.PLAIN, 40));
+		lblfinalResults.setBackground(Color.BLACK);
+		lblfinalResults.setBounds(30, 459, 545, 100);
+		panel.add(lblfinalResults);
 		panel.add(graphicPanel);
   
 	}
@@ -132,6 +140,7 @@ public class TetrisGUI extends JFrame {
 				lblLines.setText("0");
 				lblGameOver.setVisible(false);
 				lblRetry.setVisible(false);
+				lblfinalResults.setVisible(false);
 				myLogic.restartLogic();
 				
 			}
@@ -238,6 +247,12 @@ public class TetrisGUI extends JFrame {
 		
 		lblGameOver.setVisible(true);
 		lblRetry.setVisible(true);	
+	}
+	
+	public void showFinalResults(int s, int l, String time) {
+		lblfinalResults.setOpaque(true);
+		lblfinalResults.setText("Score: " + String.valueOf(s) + "    Lines: " + String.valueOf(l) + "    Time: " + time );
+		lblfinalResults.setVisible(true);
 	}
 	
 	public int getRows() {

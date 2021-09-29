@@ -11,16 +11,31 @@ public class Time extends Thread {
 	
 	public Time(Logic logic, int step) {
 	
+		this.milliseconds = 0;//Mel
+		this.seconds = 0;
+		this.minutes = 0;
+		this.stopTime = 0; // Mel
 		this.logic = logic;
 		this.running = true;
 		this.step = step;
 		this.startTime = System.currentTimeMillis();
 	}
 	
+	public void restartTime(int step) { // Mel
+		milliseconds = 0;
+		seconds = 0;
+		minutes = 0;
+		startTime = 0;
+		stopTime = 0;
+		this.running = true;
+		this.step = step;
+		this.startTime = System.currentTimeMillis();
+	}
+	
 	public void stopTime() {
-	   
+		
 		this.stopTime = System.currentTimeMillis();
-	    this.running = false;
+		this.running = false;
 	}
 	
 	@Override

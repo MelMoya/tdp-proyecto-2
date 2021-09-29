@@ -150,6 +150,7 @@ public class Logic {
 		gameOver = true;
 		myTime.stopTime();
 		myGUI.showGameOver();
+		myGUI.showFinalResults(score, currentCompletedLines, currentTime);
 	}
 	
 	public void refreshGUI(int y, int x, ImageIcon image) {
@@ -172,8 +173,11 @@ public class Logic {
 		nextTetrimino = createNewTetrimino();
 		currentTetrimino.initializeTetrimino();
 		//RESTART TIMER
+		myTime.stop();
+//		myTime.restartTime(step); // No lo detiene y queda abajo
+		myTime = new Time(this, step);
+		myTime.start();
 	}
-	
 	
 	public int getCurrentScore() {
 		
