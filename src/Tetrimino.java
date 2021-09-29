@@ -45,10 +45,14 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 	
 	protected void setTetriminoCellsAsFree() {
 		
-		x.setStateAsFree();
-		y.setStateAsFree();
-		z.setStateAsFree();
-		w.setStateAsFree();
+		try {
+			x.setStateAsFree();
+			y.setStateAsFree();
+			z.setStateAsFree();
+			w.setStateAsFree();
+		}catch(NullPointerException e) {
+			
+		}		
 	}
 	
 	protected void setTetriminoCellsAsTaken() {

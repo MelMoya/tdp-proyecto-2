@@ -175,6 +175,43 @@ public class TetrisGUI extends JFrame {
 	 	panel.add(lblScoreText);
 	 	panel.add(lblTime);
 	 	panel.add(lblTimeText);
+	 	
+	 	JLabel lblLArrow = new JLabel("");
+	 	lblLArrow.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/gameAssets/leftArrow.png")));
+	 	lblLArrow.setBounds(31, 689, 36, 34);
+	 	panel.add(lblLArrow);
+	 	
+	 	JLabel lblRArrow = new JLabel("");
+	 	lblRArrow.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/gameAssets/rightArrow.png")));
+	 	lblRArrow.setBounds(97, 689, 46, 34);
+	 	panel.add(lblRArrow);
+	 	
+	 	JLabel lblZKey = new JLabel("");
+	 	lblZKey.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/gameAssets/zKey.png")));
+	 	lblZKey.setBounds(203, 689, 46, 34);
+	 	panel.add(lblZKey);
+	 	
+	 	JLabel lblXKey = new JLabel("");
+	 	lblXKey.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/gameAssets/xKey.png")));
+	 	lblXKey.setBounds(237, 689, 46, 34);
+	 	panel.add(lblXKey);
+	 	
+	 	JLabel lblLArrow_1 = new JLabel("");
+	 	lblLArrow_1.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/gameAssets/downArrow.png")));
+	 	lblLArrow_1.setBounds(65, 689, 54, 34);
+	 	panel.add(lblLArrow_1);
+	 	
+	 	JLabel lblMove = new JLabel("Move");
+	 	lblMove.setForeground(Color.WHITE);
+	 	lblMove.setFont(new Font("Agency FB", Font.PLAIN, 24));
+	 	lblMove.setBounds(141, 690, 46, 33);
+	 	panel.add(lblMove);
+	 	
+	 	JLabel lblRotate = new JLabel("Rotate");
+	 	lblRotate.setForeground(Color.WHITE);
+	 	lblRotate.setFont(new Font("Agency FB", Font.PLAIN, 24));
+	 	lblRotate.setBounds(276, 689, 54, 33);
+	 	panel.add(lblRotate);
 	}
 
 	public void refreshNextTetriminoLabel(String nextTetriminoName) {
@@ -198,7 +235,7 @@ public class TetrisGUI extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) 
                     myLogic.moveToRight();
                 
-                if (e.getKeyCode() == KeyEvent.VK_UP) 
+                if (e.getKeyCode() == KeyEvent.VK_X) 
                 	myLogic.rotate();
                 
                 if (e.getKeyCode() == KeyEvent.VK_Z) 
@@ -262,5 +299,4 @@ public class TetrisGUI extends JFrame {
 		
 		return columns;
 	}
-
 }
