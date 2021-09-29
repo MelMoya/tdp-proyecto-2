@@ -106,7 +106,7 @@ public class TetrisGUI extends JFrame {
 	        }
 	    });
 	    lblClose.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/gameAssets/close.png")));
-	    lblClose.setBounds(550, 11, 46, 30);
+	    lblClose.setBounds(550, 11, 46, 42);
 	
 		lblLines = new JLabel("0");
 		lblLines.setFont(new Font("Agency FB", Font.PLAIN, 24));
@@ -127,15 +127,13 @@ public class TetrisGUI extends JFrame {
 	    lblNextTetriminoText.setBounds(373, 95, 125, 57);
 	    
 	    lblRetry = new JLabel("");
-	    lblRetry.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/gameAssets/retry2.png")));
+	    lblRetry.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/gameAssets/retry.png")));
 	    lblRetry.addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent arg0) {
             	restartGame();
             }
 
 			private void restartGame() {
-				//parar y reiniciar el tiempo
-				System.out.println("RESTART");
 				lblScore.setText("0");
 				lblLines.setText("0");
 				lblGameOver.setVisible(false);
@@ -146,7 +144,7 @@ public class TetrisGUI extends JFrame {
 			}
         });
 	    lblRetry.setVisible(false);
-	    lblRetry.setBounds(507, 11, 46, 30);
+	    lblRetry.setBounds(507, 11, 46, 42);
 		
 		lblScore = new JLabel("0");
 		lblScore.setFont(new Font("Agency FB", Font.PLAIN, 24));

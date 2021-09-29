@@ -75,8 +75,10 @@ public class Time extends Thread {
 		seconds = (int) (milliseconds / 1000) % 60 ;
 		minutes = (int) ((milliseconds / (1000*60)) % 60);
 		
-		
-		return minutes + ":" + "0" + seconds;
+		String toReturn = minutes + ":" + seconds;
+		if (seconds<10)
+			toReturn = minutes + ":" + "0" + seconds;
+		return toReturn;
 			
  		
 	}

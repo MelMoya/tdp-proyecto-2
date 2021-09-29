@@ -69,14 +69,18 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 	
 	protected void refreshPositions() {
 		
-		xx = x.getXPosition();
-		xy = x.getYPosition();
-		yx = y.getXPosition();
-		yy = y.getYPosition();
-		zx = z.getXPosition();
-		zy = z.getYPosition();
-		wx = w.getXPosition();
-		wy = w.getYPosition();
+		try {
+			xx = x.getXPosition();
+			xy = x.getYPosition();
+			yx = y.getXPosition();
+			yy = y.getYPosition();
+			zx = z.getXPosition();
+			zy = z.getYPosition();
+			wx = w.getXPosition();
+			wy = w.getYPosition();
+		}catch(NullPointerException e) {
+			
+		}	
 	}
 	
 	@Override
