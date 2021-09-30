@@ -9,9 +9,13 @@ public class Tetrimino_J extends Tetrimino implements Supplier<Tetrimino>{
 		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/cells/blueCell.png"));
 	}
 	
-	public void initializeTetrimino() {
+	public boolean initializeTetrimino() {
+		
+		boolean valid = checkPositions(0, 5, 1, 5, 2, 5, 2, 4);
 		assignNewCellsToTetrimino(0, 5, 1, 5, 2, 5, 2, 4);		
 		setTetriminoCellsAsTaken();
+		
+		return valid;
 	}
 
 	@Override

@@ -16,6 +16,7 @@ public class Logic {
 	private String currentTime = "0:0";
 	private int score = 0;
 	private int step = 1000;
+	private boolean created = true;
 
 
 	public Logic(TetrisGUI myGUI) {
@@ -27,6 +28,7 @@ public class Logic {
 		currentTetrimino = createNewTetrimino();
 		currentTetrimino.initializeTetrimino();
 		nextTetrimino = createNewTetrimino();	
+		
 	}
 		
 	public Tetrimino createNewTetrimino() {
@@ -34,7 +36,7 @@ public class Logic {
 		 ArrayList<Supplier<Tetrimino>> availableTetriminos = new ArrayList<>();
 		 availableTetriminos.add(new Tetrimino_I(myGrid));
 		 availableTetriminos.add(new Tetrimino_J(myGrid));
-		 availableTetriminos.add(new Tetrimino_L(myGrid));	 	
+		 availableTetriminos.add(new Tetrimino_L(myGrid));
 		 availableTetriminos.add(new Tetrimino_O(myGrid));
 		 availableTetriminos.add(new Tetrimino_S(myGrid));
 		 availableTetriminos.add(new Tetrimino_T(myGrid));
@@ -91,7 +93,7 @@ public class Logic {
 			currentTetrimino.moveToRight();
 	}
 	
-	public void moveToDown() {
+	public synchronized void moveToDown() {
 			
 		int removedLines = 0;
 	 
@@ -102,9 +104,12 @@ public class Logic {
 				currentTetrimino = nextTetrimino;
 				nextTetrimino = createNewTetrimino();
 				myGUI.refreshNextTetriminoLabel(nextTetrimino.getClass().getName());
-				currentTetrimino.initializeTetrimino();
+				created = currentTetrimino.initializeTetrimino();
 				currentCompletedLines += removedLines;
 				addPoints(removedLines);
+				
+				if (!created)
+					gameOver();
 			}
 			
 			else 		

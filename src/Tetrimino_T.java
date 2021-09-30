@@ -10,9 +10,13 @@ public class Tetrimino_T extends Tetrimino {
 	
 	}
 
-	public void initializeTetrimino() {
+	public boolean initializeTetrimino() {
+		
+		boolean valid = checkPositions(0, 4, 1, 3, 1, 4, 1, 5);
 		assignNewCellsToTetrimino(0, 4, 1, 3, 1, 4, 1, 5);
 		setTetriminoCellsAsTaken();
+		
+		return valid;
 	}
 	
 	@Override

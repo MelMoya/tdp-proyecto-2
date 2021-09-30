@@ -7,10 +7,13 @@ public class Tetrimino_Z extends Tetrimino {
 
 	}
 
-	public void initializeTetrimino() {
+	public boolean initializeTetrimino() {
 		
+		boolean valid = checkPositions(0, 3, 0, 4, 1, 4, 1, 5);
 		assignNewCellsToTetrimino(0, 3, 0, 4, 1, 4, 1, 5);
 		setTetriminoCellsAsTaken();
+		
+		return valid;
 	}
 	
 	@Override
@@ -72,7 +75,6 @@ public class Tetrimino_Z extends Tetrimino {
 		refreshPositions();
 		boolean block1 = false;
 		boolean block2 = false;
-		boolean block3 = false;
 		boolean Flag = false;
 		switch (currentAngle) {
 			case 0:

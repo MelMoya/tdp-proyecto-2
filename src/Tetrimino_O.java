@@ -7,10 +7,13 @@ public class Tetrimino_O extends Tetrimino {
 		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/cells/yellowCell.png"));
 	}
 	
-	public void initializeTetrimino() {
+	public boolean initializeTetrimino() {		
 		
+		boolean valid = checkPositions(0, 4, 0, 5, 1, 4, 1, 5);
 		assignNewCellsToTetrimino(0, 4, 0, 5, 1, 4, 1, 5);
 		setTetriminoCellsAsTaken();
+		
+		return valid;
 	}
 
 	@Override

@@ -26,7 +26,7 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 		this.myGrid = myGrid;
 	}
 	
-	public abstract void initializeTetrimino();
+	public abstract boolean initializeTetrimino();
 	
 	public abstract void moveToLeft();
 	
@@ -85,6 +85,16 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 		}catch(NullPointerException e) {
 			
 		}	
+	}
+	
+	protected boolean checkPositions(int xx, int xy, int yx, int yy, int zx, int zy, int wx, int wy) {
+		boolean valid = false;
+		valid = myGrid.checkMoveHorizontal(xx, xy) &&
+				myGrid.checkMoveHorizontal(yx, yy) &&
+				myGrid.checkMoveHorizontal(zx, zy) &&
+				myGrid.checkMoveHorizontal(wx, wy);
+		
+		return valid;
 	}
 	
 	@Override

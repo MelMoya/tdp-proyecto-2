@@ -8,10 +8,13 @@ public class Tetrimino_I extends Tetrimino{
 		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/cells/cyanCell.png"));
 	}
 	
-	public void initializeTetrimino() {
+	public boolean initializeTetrimino() {
 		
+		boolean valid = checkPositions(0, 3, 0, 4, 0, 5, 0, 6);
 		assignNewCellsToTetrimino(0, 3, 0, 4, 0, 5, 0, 6);
 		setTetriminoCellsAsTaken();	
+		
+		return valid;
 	}
 	
 	@Override

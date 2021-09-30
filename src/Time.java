@@ -1,6 +1,6 @@
 public class Time extends Thread {
 
-	private int milliseconds = 0;
+	private int milliseconds = 0; // Borrar
 	private int seconds = 0;
 	private int secondsSpeed = 0;
 	private int minutes = 0;
@@ -23,17 +23,17 @@ public class Time extends Thread {
 		this.startTime = System.currentTimeMillis();
 	}
 	
-	public void restartTime(int step) { 
-		milliseconds = 0;
-		seconds = 0;
-		minutes = 0;
-		startTime = 0;
-		stopTime = 0;
-		secondsSpeed = seconds + 10;
-		this.running = true;
-		this.step = step;
-		this.startTime = System.currentTimeMillis();
-	}
+//	public void restartTime(int step) { 
+//		milliseconds = 0;
+//		seconds = 0;
+//		minutes = 0;
+//		startTime = 0;
+//		stopTime = 0;
+//		secondsSpeed = seconds + 10;
+//		this.running = true;
+//		this.step = step;
+//		this.startTime = System.currentTimeMillis();
+//	}
 	
 	public void stopTime() {
 		
