@@ -24,11 +24,12 @@ public class TetrisGUI extends JFrame {
 	private JLabel lblLines;
 	private JLabel lblLinesText;
 	private JLabel lblNextTetrimino;
-	private JLabel lblRetry;
 	private JLabel lblScore;
 	private JLabel lblScoreText;
 	private JLabel lblTime = new JLabel("0:0");
 	private JLabel lblfinalResults;
+	private JButton btnClose;
+	private JButton btnRestart;
 	
 	public TetrisGUI() {
 	
@@ -36,6 +37,7 @@ public class TetrisGUI extends JFrame {
 		setUpGrid();
 		myLogic = new Logic(this);
 		setUpLabels();
+		setUpButtons();
 	
 		refreshNextTetriminoLabel(myLogic.getNameOfNextTetrimino());
 		
@@ -45,8 +47,9 @@ public class TetrisGUI extends JFrame {
         
         startListener();
 
+        this.setFocusable(true);
 	}
-	
+
 	private void setUpWindow() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,7 +83,8 @@ public class TetrisGUI extends JFrame {
 		lblGameOver.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/gameAssets/gameOverSign.png")));
 		lblGameOver.setBounds(10, 307, 565, 130);
 		lblGameOver.setVisible(false);
-		panel.add(lblGameOver);	
+		panel.add(lblGameOver);
+		
 		
 		lblfinalResults = new JLabel("", SwingConstants.CENTER);
 		lblfinalResults.setForeground(Color.RED);
@@ -93,16 +97,6 @@ public class TetrisGUI extends JFrame {
 	}
 	
 	private void setUpLabels() {
-		
-		JLabel lblClose = new JLabel("");
-	    lblClose.addMouseMotionListener(new MouseMotionAdapter() {
-	    	public void mouseDragged(MouseEvent arg0) {
-	    		dispose();
-	    		System.exit(EXIT_ON_CLOSE);
-	        }
-	    });
-	    lblClose.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/gameAssets/close.png")));
-	    lblClose.setBounds(550, 11, 46, 42);
 	
 		lblLines = new JLabel("0");
 		lblLines.setFont(new Font("Agency FB", Font.PLAIN, 24));
@@ -122,27 +116,7 @@ public class TetrisGUI extends JFrame {
 	    lblNextTetriminoText.setFont(new Font("Agency FB", Font.PLAIN, 27));
 	    lblNextTetriminoText.setBounds(373, 95, 125, 57);
 	    
-	    lblRetry = new JLabel("");
-	    lblRetry.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/gameAssets/retry.png")));
-	    lblRetry.addMouseMotionListener(new MouseMotionAdapter() {
-            public void mouseDragged(MouseEvent arg0) {
-            	restartGame();
-            }
-
-			private void restartGame() {
-				lblScore.setText("0");
-				lblLines.setText("0");
-				lblGameOver.setVisible(false);
-				lblRetry.setVisible(false);
-				lblfinalResults.setVisible(false);
-				myLogic.restartLogic();
-				refreshNextTetriminoLabel(myLogic.getNameOfNextTetrimino());
-				
-			}
-        });
-	    lblRetry.setVisible(false);
-	    lblRetry.setBounds(507, 11, 46, 42);
-		
+	    		
 		lblScore = new JLabel("0");
 		lblScore.setFont(new Font("Agency FB", Font.PLAIN, 24));
 		lblScore.setForeground(Color.WHITE);
@@ -161,13 +135,10 @@ public class TetrisGUI extends JFrame {
 	    lblTimeText.setForeground(Color.WHITE);
 	    lblTimeText.setFont(new Font("Agency FB", Font.PLAIN, 27));
 	    lblTimeText.setBounds(373, 503, 125, 57);
-	        
-	    panel.add(lblClose);
 	 	panel.add(lblLines);
 	    panel.add(lblLinesText);
 	    panel.add(lblNextTetrimino);
 		panel.add(lblNextTetriminoText);
-	    panel.add(lblRetry);
 	 	panel.add(lblScore);
 	 	panel.add(lblScoreText);
 	 	panel.add(lblTime);
@@ -209,6 +180,50 @@ public class TetrisGUI extends JFrame {
 	 	lblRotate.setFont(new Font("Agency FB", Font.PLAIN, 24));
 	 	lblRotate.setBounds(276, 689, 54, 33);
 	 	panel.add(lblRotate);
+	}
+	
+	private void setUpButtons() {
+		
+		btnClose = new JButton("");
+	 	btnClose.addActionListener(new ActionListener() {
+	 		public void actionPerformed(ActionEvent e) {
+	 			
+	 			dispose();
+	    		System.exit(EXIT_ON_CLOSE);
+	 		}
+	 	});
+	 	btnClose.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/gameAssets/close.png")));
+	 	btnClose.setBackground(Color.BLACK);
+	 	btnClose.setBorder(null);
+	 	btnClose.setBounds(550, 21, 40, 42);
+	 	panel.add(btnClose);
+		
+		btnRestart = new JButton("");
+		btnRestart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				restartGame();
+				panel.requestDefaultFocus();
+            }
+
+            private void restartGame() {
+				lblScore.setText("0");
+				lblLines.setText("0");
+				lblGameOver.setVisible(false);
+				lblfinalResults.setVisible(false);
+				myLogic.restartLogic();
+				refreshNextTetriminoLabel(myLogic.getNameOfNextTetrimino());
+				btnRestart.setVisible(false);
+				panel.requestFocus();
+				
+			}
+		});
+		btnRestart.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/gameAssets/retry.png")));
+		btnRestart.setBorder(null);
+		btnRestart.setBackground(Color.BLACK);
+		btnRestart.setBounds(499, 21, 40, 42);
+		btnRestart.setVisible(false);
+		panel.add(btnRestart);
+
 	}
 
 	public void refreshNextTetriminoLabel(String nextTetriminoName) {
@@ -281,7 +296,7 @@ public class TetrisGUI extends JFrame {
 	public void showGameOver() {
 		
 		lblGameOver.setVisible(true);
-		lblRetry.setVisible(true);	
+		btnRestart.setVisible(true);
 	}
 	
 	public void showFinalResults(int s, int l, String time) {
