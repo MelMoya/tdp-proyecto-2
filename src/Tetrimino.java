@@ -50,7 +50,7 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 			y.setStateAsFree();
 			z.setStateAsFree();
 			w.setStateAsFree();
-		}catch(NullPointerException e) {
+		} catch(NullPointerException e) {
 			
 		}		
 	}
@@ -82,7 +82,7 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 			zy = z.getYPosition();
 			wx = w.getXPosition();
 			wy = w.getYPosition();
-		}catch(NullPointerException e) {
+		} catch(NullPointerException e) {
 			
 		}	
 	}
@@ -99,6 +99,7 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 	
 	@Override
 	public Tetrimino get() {
+		
 		return this;
 	}
 		

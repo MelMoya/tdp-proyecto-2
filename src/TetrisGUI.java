@@ -32,6 +32,7 @@ public class TetrisGUI extends JFrame {
 	private JButton btnRestart;
 	
 	public TetrisGUI() {
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(TetrisGUI.class.getResource("/img/gameAssets/tetris.png")));
 	
 		setUpWindow();
@@ -116,8 +117,7 @@ public class TetrisGUI extends JFrame {
 	    lblNextTetriminoText.setForeground(Color.WHITE);
 	    lblNextTetriminoText.setFont(new Font("Agency FB", Font.PLAIN, 27));
 	    lblNextTetriminoText.setBounds(373, 95, 125, 57);
-	    
-	    		
+	    	
 		lblScore = new JLabel("0");
 		lblScore.setFont(new Font("Agency FB", Font.PLAIN, 24));
 		lblScore.setForeground(Color.WHITE);
@@ -282,9 +282,9 @@ public class TetrisGUI extends JFrame {
 	}
 
 	public void refreshDataGUI(int s, int l) {
+		
 		lblScore.setText(String.valueOf(s));
 		lblLines.setText(String.valueOf(l));
-		
 	}
 	
 	public void refreshTime(String time) {
@@ -299,6 +299,7 @@ public class TetrisGUI extends JFrame {
 	}
 	
 	public void showFinalResults(int s, int l, String time) {
+		
 		lblfinalResults.setOpaque(true);
 		lblfinalResults.setText("Score: " + String.valueOf(s) + "    Lines: " + String.valueOf(l) + "    Time: " + time );
 		lblfinalResults.setVisible(true);

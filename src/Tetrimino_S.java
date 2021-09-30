@@ -3,9 +3,9 @@ import javax.swing.ImageIcon;
 public class Tetrimino_S extends Tetrimino{
 
 	public Tetrimino_S(Grid myGrid) {
+		
 		super(myGrid);
 		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/cells/greenCell.png"));
-
 	}
 
 	public boolean initializeTetrimino() {
@@ -37,9 +37,10 @@ public class Tetrimino_S extends Tetrimino{
 						&& myGrid.checkMoveHorizontal(wx, wy-1));
 				break;
 		}	
+		
 		if (validMove) {
 			setTetriminoCellsAsFree();		
-			assignNewCellsToTetrimino(xx,xy -1,yx, yy -1,zx, zy -1,wx, wy -1);		
+			assignNewCellsToTetrimino(xx, xy -1, yx, yy -1, zx, zy -1, wx, wy -1);		
 			setTetriminoCellsAsTaken();
 		}
 	}
@@ -48,7 +49,7 @@ public class Tetrimino_S extends Tetrimino{
 	public void moveToRight() {
 		refreshPositions();
 		boolean validMove = false;
-		switch(currentAngle) {
+		switch (currentAngle) {
 			case 0: 				
 				validMove = ( myGrid.checkMoveHorizontal(xx, xy+1) &&   myGrid.checkMoveHorizontal(zx, zy+1));
 				break;

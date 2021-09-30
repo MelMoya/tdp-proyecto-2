@@ -7,7 +7,6 @@ public class Tetrimino_T extends Tetrimino {
 		
 		super(myGrid);			
 		cellImage = new ImageIcon(TetrisGUI.class.getResource("/img/cells/violetCell.png"));
-	
 	}
 
 	public boolean initializeTetrimino() {

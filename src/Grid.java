@@ -79,12 +79,12 @@ public class Grid {
 	}
 	
 	public void restartGrid() {
+		
 		for (int i = 0; i < rows; i++) 
 			for (int j = 0; j < columns; j++) {
 				cellGrid[i][j] = new Cell(i,j, null, this);
 				cellGrid[i][j].setStateAsFree();
-			}
-		
+			}		
 	}
 	
 	public boolean checkFullRow(int y) {

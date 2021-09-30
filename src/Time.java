@@ -1,12 +1,12 @@
 public class Time extends Thread {
 
-	private int milliseconds = 0; // Borrar
-	private int seconds = 0;
-	private int secondsSpeed = 0;
-	private int minutes = 0;
-	private long startTime = 0;
-	private long stopTime = 0;
-	private boolean running = false;
+	private int milliseconds;
+	private int seconds;
+	private int secondsSpeed;
+	private int minutes;
+	private long startTime;
+	private long stopTime;
+	private boolean running;
 	private Logic logic;
 	private int step;
 	
@@ -23,17 +23,6 @@ public class Time extends Thread {
 		this.startTime = System.currentTimeMillis();
 	}
 	
-//	public void restartTime(int step) { 
-//		milliseconds = 0;
-//		seconds = 0;
-//		minutes = 0;
-//		startTime = 0;
-//		stopTime = 0;
-//		secondsSpeed = seconds + 10;
-//		this.running = true;
-//		this.step = step;
-//		this.startTime = System.currentTimeMillis();
-//	}
 	
 	public void stopTime() {
 		
@@ -81,20 +70,20 @@ public class Time extends Thread {
 		increment();
 		
 		String toReturn = minutes + ":" + seconds;
-		if (seconds<10) {
+		
+		if (seconds < 10) 
 			toReturn = minutes + ":" + "0" + seconds;
-
-		}
 	
 		return toReturn;
- 		
 	}
 	
 	private void increment() {
+		
 		if (seconds == secondsSpeed) {
 			secondsSpeed = seconds + 10;
 			logic.increaseSpeed();
 		}
+		
 		if (seconds == 50) 
 			secondsSpeed = 0;
 	}	
