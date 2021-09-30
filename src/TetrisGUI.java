@@ -32,6 +32,7 @@ public class TetrisGUI extends JFrame {
 	private JButton btnRestart;
 	
 	public TetrisGUI() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\meelm\\Desktop\\Dev\\tdp-proyecto-2\\src\\img\\gameAssets\\tetris.png"));
 	
 		setUpWindow();
 		setUpGrid();

@@ -12,11 +12,9 @@ public class Logic {
 	private Time myTime;
 	
 	private boolean gameOver = false;
-	private int counter = 0;
 	private int currentCompletedLines = 0;
 	private String currentTime = "0:0";
 	private int score = 0;
-	private int speed = 1;
 	private int step = 1000;
 
 
@@ -72,13 +70,7 @@ public class Logic {
 	}
 	
 	public void increaseSpeed() {
-		
-//		if (speed < 9 && step - 50 > 50 ) {
-//			speed++;
-//			step -= 50;
-//			myTime.setStep(step);
-//		}
-		
+
 		if (step - 50 > 50 ) {
 			step -= 50;
 			System.out.println(step);
@@ -105,11 +97,11 @@ public class Logic {
 //			increaseSpeed();
 //			counter = 0;
 //		}
-		if (myTime.getSecondsSpeed() == 5) {
-			System.out.println("stepDown "+ myTime.getSecondsSpeed());
-			increaseSpeed();
-			myTime.setSecondsSpeed(0);
-		}
+//		if (myTime.getSecondsSpeed() == 5) {
+//			System.out.println("stepDown "+ myTime.getSecondsSpeed());
+//			increaseSpeed();
+//			myTime.setSecondsSpeed(0);
+//		}
 			
 		
 		
@@ -178,9 +170,7 @@ public class Logic {
 	public void restartLogic() {
 		currentCompletedLines = 0;
 		gameOver = false;
-		counter = 0;
 		score = 0;
-		speed = 1;
 		step = 1000;
 		myGrid.restartGrid();
 		currentTetrimino = createNewTetrimino();
@@ -202,9 +192,6 @@ public class Logic {
 		return currentCompletedLines;
 	}
 
-	public int getSpeed() {
-		return speed;
-	}
 
 	public String getNameOfNextTetrimino() {
 		

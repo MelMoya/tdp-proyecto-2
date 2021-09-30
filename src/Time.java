@@ -12,14 +12,14 @@ public class Time extends Thread {
 	
 	public Time(Logic logic, int step) {
 	
-		this.milliseconds = 0;//Mel
+		this.milliseconds = 0;
 		this.seconds = 0;
 		this.minutes = 0;
-		this.stopTime = 0; // Mel
-		this.setSecondsSpeed(0);
+		this.stopTime = 0;
 		this.logic = logic;
 		this.running = true;
 		this.step = step;
+		this.secondsSpeed = seconds + 10;
 		this.startTime = System.currentTimeMillis();
 	}
 	
@@ -29,6 +29,7 @@ public class Time extends Thread {
 		minutes = 0;
 		startTime = 0;
 		stopTime = 0;
+		secondsSpeed = seconds + 10;
 		this.running = true;
 		this.step = step;
 		this.startTime = System.currentTimeMillis();
@@ -64,7 +65,6 @@ public class Time extends Thread {
 		
 		if (running) {
 	         elapsed = (System.currentTimeMillis() - startTime);
-			secondsSpeed++; //Mel
 		}
 	    else 
 	        elapsed = (stopTime - startTime);
@@ -78,6 +78,7 @@ public class Time extends Thread {
 		milliseconds = (int) (getElapsedTime());
 		seconds = (int) (milliseconds / 1000) % 60 ;
 		minutes = (int) ((milliseconds / (1000*60)) % 60);
+		increment();
 		
 		String toReturn = minutes + ":" + seconds;
 		if (seconds<10) {
@@ -86,18 +87,18 @@ public class Time extends Thread {
 		}
 	
 		return toReturn;
-			
  		
 	}
-
-	public int getSecondsSpeed() {
-		return secondsSpeed;
-	}
-
-	public void setSecondsSpeed(int secondsSpeed) {
-		this.secondsSpeed = secondsSpeed;
-	}
 	
+	private void increment() {
+		System.out.println(secondsSpeed);
+		if (seconds == secondsSpeed) {
+			secondsSpeed = seconds + 10;
+			logic.increaseSpeed();
+		}
+		if (seconds == 50) 
+			secondsSpeed = 0;
+	}	
 	
 //	public void increaseTime() {
 //		
