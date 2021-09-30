@@ -174,7 +174,6 @@ public class Logic {
 		currentTetrimino.initializeTetrimino();
 		//RESTART TIMER
 		myTime.stop();
-//		myTime.restartTime(step); // No lo detiene y queda abajo
 		myTime = new Time(this, step);
 		myTime.start();
 	}

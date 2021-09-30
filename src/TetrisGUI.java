@@ -1,8 +1,4 @@
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -140,6 +136,7 @@ public class TetrisGUI extends JFrame {
 				lblRetry.setVisible(false);
 				lblfinalResults.setVisible(false);
 				myLogic.restartLogic();
+				refreshNextTetriminoLabel(myLogic.getNameOfNextTetrimino());
 				
 			}
         });
@@ -238,6 +235,9 @@ public class TetrisGUI extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_X) 
                 	myLogic.rotate();
                 
+                if (e.getKeyCode() == KeyEvent.VK_UP) 
+                	myLogic.rotate();
+                
                 if (e.getKeyCode() == KeyEvent.VK_Z) 
                 	myLogic.rotateIZQ();
 
@@ -256,7 +256,7 @@ public class TetrisGUI extends JFrame {
 			}
 
 
-       });
+	 	});
 	}
 	
 	public void draw(int y, int x, ImageIcon image) {
