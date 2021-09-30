@@ -73,11 +73,17 @@ public class Logic {
 	
 	public void increaseSpeed() {
 		
-		if (speed < 9 && step - 50 > 50 ) {
-			speed++;
+//		if (speed < 9 && step - 50 > 50 ) {
+//			speed++;
+//			step -= 50;
+//			myTime.setStep(step);
+//		}
+		
+		if (step - 50 > 50 ) {
 			step -= 50;
+			System.out.println(step);
 			myTime.setStep(step);
-		}
+		}		
 		
 	}
 	
@@ -94,11 +100,19 @@ public class Logic {
 	}
 	
 	public void moveToDown() {
-		counter++;
-		if (counter == 10) {
+//		counter++;
+//		if (counter == 10) {
+//			increaseSpeed();
+//			counter = 0;
+//		}
+		if (myTime.getSecondsSpeed() == 5) {
+			System.out.println("stepDown "+ myTime.getSecondsSpeed());
 			increaseSpeed();
-			counter = 0;
+			myTime.setSecondsSpeed(0);
 		}
+			
+		
+		
 		
 		int removedLines = 0;
 	 
