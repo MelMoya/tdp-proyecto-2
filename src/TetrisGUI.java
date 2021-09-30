@@ -32,7 +32,7 @@ public class TetrisGUI extends JFrame {
 	private JButton btnRestart;
 	
 	public TetrisGUI() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\meelm\\Desktop\\Dev\\tdp-proyecto-2\\src\\img\\gameAssets\\tetris.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TetrisGUI.class.getResource("/img/gameAssets/tetris.png")));
 	
 		setUpWindow();
 		setUpGrid();
@@ -261,13 +261,11 @@ public class TetrisGUI extends JFrame {
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 

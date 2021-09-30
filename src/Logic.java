@@ -92,20 +92,7 @@ public class Logic {
 	}
 	
 	public void moveToDown() {
-//		counter++;
-//		if (counter == 10) {
-//			increaseSpeed();
-//			counter = 0;
-//		}
-//		if (myTime.getSecondsSpeed() == 5) {
-//			System.out.println("stepDown "+ myTime.getSecondsSpeed());
-//			increaseSpeed();
-//			myTime.setSecondsSpeed(0);
-//		}
 			
-		
-		
-		
 		int removedLines = 0;
 	 
 		if (!gameOver && !currentTetrimino.moveDown()) {
@@ -176,7 +163,6 @@ public class Logic {
 		currentTetrimino = createNewTetrimino();
 		nextTetrimino = createNewTetrimino();
 		currentTetrimino.initializeTetrimino();
-		//RESTART TIMER
 		myTime.stop();
 		myTime = new Time(this, step);
 		myTime.start();
@@ -198,15 +184,6 @@ public class Logic {
 		return nextTetrimino.getClass().getName();
 		
 	}
-	
-//	public String getCurrentTime() {
-//		
-//		int seconds = (int) (this.currentTime / 1000);
-//		
-//		int minutes = (int) seconds / 60;
-//		
-//		return minutes + ":" + seconds;
-//	}
 
 	public void setTime(String time) {
 		

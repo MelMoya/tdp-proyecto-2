@@ -23,7 +23,7 @@ public class Time extends Thread {
 		this.startTime = System.currentTimeMillis();
 	}
 	
-	public void restartTime(int step) { // Mel
+	public void restartTime(int step) { 
 		milliseconds = 0;
 		seconds = 0;
 		minutes = 0;
@@ -91,7 +91,6 @@ public class Time extends Thread {
 	}
 	
 	private void increment() {
-		System.out.println(secondsSpeed);
 		if (seconds == secondsSpeed) {
 			secondsSpeed = seconds + 10;
 			logic.increaseSpeed();
@@ -99,34 +98,5 @@ public class Time extends Thread {
 		if (seconds == 50) 
 			secondsSpeed = 0;
 	}	
-	
-//	public void increaseTime() {
-//		
-//		seconds++;
-//	}
-//	
-//	public void startTime() throws InterruptedException {
-//		 
-//	    boolean x=true;
-//	    while(x)
-//	    {
-//	        TimeUnit.SECONDS.sleep(1);
-//	        long timepassed=System.currentTimeMillis()-starttime;
-//	        long secondspassed=timepassed/1000;
-//	        if(secondspassed==60)
-//	        {
-//	            secondspassed=0;
-//	            starttime=System.currentTimeMillis();
-//	        }
-//	        if((secondspassed%60)==0)
-//	        minutes++;
-//		
-//	}
-//	}
-//	
-//	public String getTime() {
-//		
-//		return minutes + ":" + seconds;
-//	}
 
 }
