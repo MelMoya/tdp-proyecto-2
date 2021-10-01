@@ -1,3 +1,6 @@
+package GUI;
+import logic.Logic;
+import launcher.Launcher;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -27,6 +30,7 @@ public class TetrisGUI extends JFrame {
 	private JLabel lblScore;
 	private JLabel lblScoreText;
 	private JLabel lblTime = new JLabel("0:0");
+	private JLabel lblSpeed;
 	private JLabel lblfinalResults;
 	private JButton btnClose;
 	private JButton btnRestart;
@@ -85,7 +89,6 @@ public class TetrisGUI extends JFrame {
 		lblGameOver.setIcon(new ImageIcon(TetrisGUI.class.getResource("/img/gameAssets/gameOverSign.png")));
 		lblGameOver.setBounds(10, 307, 565, 130);
 		lblGameOver.setVisible(false);
-		panel.add(lblGameOver);
 		
 		
 		lblfinalResults = new JLabel("", SwingConstants.CENTER);
@@ -94,6 +97,7 @@ public class TetrisGUI extends JFrame {
 		lblfinalResults.setBackground(Color.BLACK);
 		lblfinalResults.setBounds(30, 459, 545, 100);
 		panel.add(lblfinalResults);
+		panel.add(lblGameOver);
 		panel.add(graphicPanel);
   
 	}
@@ -103,7 +107,7 @@ public class TetrisGUI extends JFrame {
 		lblLines = new JLabel("0");
 		lblLines.setFont(new Font("Agency FB", Font.PLAIN, 24));
 		lblLines.setForeground(Color.WHITE);
-		lblLines.setBounds(431, 459, 46, 33);
+		lblLines.setBounds(431, 439, 46, 33);
 		
 	    lblLinesText = new JLabel("Lines");
 	    lblLinesText.setForeground(Color.WHITE);
@@ -130,12 +134,12 @@ public class TetrisGUI extends JFrame {
 	    
 	    lblTime.setForeground(Color.WHITE);
 	    lblTime.setFont(new Font("Agency FB", Font.PLAIN, 24));
-	    lblTime.setBounds(415, 566, 46, 33);
+	    lblTime.setBounds(415, 551, 46, 33);
 	    	                
 	    JLabel lblTimeText = new JLabel("Time");
 	    lblTimeText.setForeground(Color.WHITE);
 	    lblTimeText.setFont(new Font("Agency FB", Font.PLAIN, 27));
-	    lblTimeText.setBounds(373, 503, 125, 57);
+	    lblTimeText.setBounds(373, 483, 125, 57);
 	 	panel.add(lblLines);
 	    panel.add(lblLinesText);
 	    panel.add(lblNextTetrimino);
@@ -209,6 +213,7 @@ public class TetrisGUI extends JFrame {
             private void restartGame() {
 				lblScore.setText("0");
 				lblLines.setText("0");
+				lblSpeed.setText("0");
 				lblGameOver.setVisible(false);
 				lblfinalResults.setVisible(false);
 				myLogic.restartLogic();
@@ -224,6 +229,18 @@ public class TetrisGUI extends JFrame {
 		btnRestart.setBounds(499, 21, 40, 42);
 		btnRestart.setVisible(false);
 		panel.add(btnRestart);
+		
+		JLabel lblSpeedText = new JLabel("Speed");
+		lblSpeedText.setForeground(Color.WHITE);
+		lblSpeedText.setFont(new Font("Agency FB", Font.PLAIN, 27));
+		lblSpeedText.setBounds(373, 595, 125, 57);
+		panel.add(lblSpeedText);
+		
+		lblSpeed = new JLabel("0");
+		lblSpeed.setForeground(Color.WHITE);
+		lblSpeed.setFont(new Font("Agency FB", Font.PLAIN, 24));
+		lblSpeed.setBounds(431, 663, 46, 33);
+		panel.add(lblSpeed);
 
 	}
 
@@ -238,25 +255,14 @@ public class TetrisGUI extends JFrame {
 			@Override
 		
 			public void keyPressed(KeyEvent e) {                 
-              
-				if (e.getKeyCode() == KeyEvent.VK_DOWN) 
-					myLogic.moveToDown();
-				            
-                if (e.getKeyCode() == KeyEvent.VK_LEFT)
-                	myLogic.moveToLeft();
-   
-                if (e.getKeyCode() == KeyEvent.VK_RIGHT) 
-                    myLogic.moveToRight();
-                
-                if (e.getKeyCode() == KeyEvent.VK_X) 
-                	myLogic.rotate();
-                
-                if (e.getKeyCode() == KeyEvent.VK_UP) 
-                	myLogic.rotate();
-                
-                if (e.getKeyCode() == KeyEvent.VK_Z) 
-                	myLogic.rotateIZQ();
-
+				
+				switch(e.getKeyCode()) {
+                case KeyEvent.VK_LEFT: { myLogic.moveToLeft(); break;}
+                case KeyEvent.VK_RIGHT: { myLogic.moveToRight(); break;}
+                case KeyEvent.VK_Z: { myLogic.rotateLeft(); break; }
+                case KeyEvent.VK_X: { myLogic.rotate(); break; }
+                case KeyEvent.VK_DOWN: { myLogic.moveToDown(); break; }
+				}
               }
 
 			@Override
@@ -290,6 +296,11 @@ public class TetrisGUI extends JFrame {
 	public void refreshTime(String time) {
 		
 		this.lblTime.setText(time);
+	}
+	
+	public void refreshSpeed(int sp) {
+		
+		this.lblSpeed.setText(String.valueOf(sp));
 	}
 
 	public void showGameOver() {

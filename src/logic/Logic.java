@@ -1,3 +1,8 @@
+package logic;
+import GUI.TetrisGUI;
+import tetriminos.*;
+
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.function.Supplier;
@@ -16,7 +21,9 @@ public class Logic {
 	private String currentTime = "0:0";
 	private int score = 0;
 	private int step = 1000;
+	private int speed = 0;
 	private boolean created = true;
+	
 
 
 	public Logic(TetrisGUI myGUI) {
@@ -75,9 +82,10 @@ public class Logic {
 
 		if (step - 50 > 50 ) {
 			step -= 50;
-			System.out.println(step);
 			myTime.setStep(step);
-		}		
+		}
+		speed++;
+		myGUI.refreshSpeed(speed/2);
 		
 	}
 	
@@ -135,10 +143,10 @@ public class Logic {
 			currentTetrimino.rotate();
 	}
 	
-	public void rotateIZQ() {
+	public void rotateLeft() {
 
 		if (!gameOver)
-			currentTetrimino.rotateIZQ();
+			currentTetrimino.rotateLeft();
 	}
 	
 	public void gameOver() {	
@@ -171,6 +179,7 @@ public class Logic {
 		myTime.stop();
 		myTime = new Time(this, step);
 		myTime.start();
+		speed = 0;
 	}
 	
 	public int getCurrentScore() {

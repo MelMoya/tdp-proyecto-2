@@ -1,3 +1,5 @@
+package logic;
+
 public class Time extends Thread {
 
 	private int milliseconds;

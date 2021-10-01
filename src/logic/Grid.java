@@ -1,3 +1,8 @@
+package logic;
+
+
+
+
 import javax.swing.ImageIcon;
 
 public class Grid {

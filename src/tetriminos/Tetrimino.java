@@ -1,3 +1,7 @@
+package tetriminos;
+import logic.*;
+
+
 import java.util.function.Supplier;
 
 import javax.swing.ImageIcon;
@@ -41,7 +45,7 @@ public abstract class Tetrimino implements Supplier<Tetrimino> {
 		return currentAngle;
 	}
 	
-	public abstract void rotateIZQ();
+	public abstract void rotateLeft();
 	
 	protected void setTetriminoCellsAsFree() {
 		
