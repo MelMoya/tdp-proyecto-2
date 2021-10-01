@@ -1,3 +1,6 @@
+package tetriminos;
+import logic.*;
+import GUI.TetrisGUI;
 import java.util.function.Supplier;
 
 import javax.swing.ImageIcon;
@@ -216,7 +219,7 @@ public class Tetrimino_J extends Tetrimino implements Supplier<Tetrimino>{
 	}
 
 	@Override
-	public void rotateIZQ() { 
+	public void rotateLeft() { 
 		
 		refreshPositions();
 		boolean valid = false;

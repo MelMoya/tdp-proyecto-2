@@ -1,3 +1,5 @@
+package launcher;
+import GUI.TetrisGUI;
 
 public class Launcher {
 

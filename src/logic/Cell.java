@@ -1,3 +1,5 @@
+package logic;
+
 import javax.swing.ImageIcon;
 
 public class Cell {

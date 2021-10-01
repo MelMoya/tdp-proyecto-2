@@ -1,3 +1,6 @@
+package tetriminos;
+import logic.*;
+import GUI.TetrisGUI;
 import javax.swing.ImageIcon;
 
 public class Tetrimino_Z extends Tetrimino {
@@ -165,7 +168,7 @@ public class Tetrimino_Z extends Tetrimino {
 		
 	}
 	
-	public void rotateIZQ() { 
+	public void rotateLeft() { 
 		rotate();
 	}
 
